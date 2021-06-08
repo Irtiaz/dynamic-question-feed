@@ -1,0 +1,55 @@
+.instructions {
+	padding: 0.5em;
+	margin-bottom: 1em;
+	background-color: #c1d1e1;
+}
+
+.input_area {
+	margin: 0 auto;
+	width: 100%;
+	font-size: 1.3rem;
+	height: 10em;
+	resize: vertical;
+}
+
+.refresh_button {
+	padding: 0.8em 1em;
+	background-color: #04AA6D;
+	border-color: #04AA6D;
+	color: white;
+	border-radius: 1em;
+	margin-bottom: 2em;
+}
+
+.refresh_button:hover {
+	background-color: #0dd38a;
+}
+
+
+.add_button {
+	padding: 0.8em 1em;
+	background-color: #74dcdc;
+	margin: 0 1em;
+	color: black;
+	border-radius: 1em;
+}
+
+.add_button:hover {
+	background-color: aqua;
+}
+
+
+.container {
+	margin: 1em 0;
+}
+
+.clear_image {
+	padding: 0.8em 0.4em;
+	margin: 0.5em;
+	border-radius: 2em;
+	background-color: #ff5959;
+}
+
+.clear_image:hover {
+	background-color: red;
+}

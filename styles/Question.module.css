@@ -1,0 +1,26 @@
+.container {
+	margin: 0 0 1.3em 0;
+    padding: 0.5em 0.5em;
+    border: 1px solid grey;
+    background-color: rgb(217, 234, 241);
+    border-radius: 0.5em;
+    box-shadow: 1em 1em 1em #e4e1e1;
+}
+
+.toggle_button {
+    padding: 0.5em;
+    margin: 1em 0;
+    background-color: #4df14d;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.toggle_button:hover {
+	background-color: #8df78d;
+}
+
+.solution_container {
+	border: 5px solid #f69bab;
+	padding: 1em;
+	margin: 1em 0;
+}

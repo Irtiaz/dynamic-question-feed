@@ -1,0 +1,58 @@
+.button_div {
+	text-align: center;
+}
+
+.button_div button {
+	padding: 1em 1.4em;
+	margin: 0 1em;
+	border-radius: 2em;
+}
+
+.container_div {
+	border: 2px solid #16a57c;
+	border-radius: 25px;
+	padding: 1em;
+	margin: 0 0 1.5em 0;
+}
+
+.edit {
+	background-color: #59df59;
+	cursor: pointer;
+}
+
+.edit:hover {
+	background-color: #68ff68;
+}
+
+.delete {
+	background-color: #ff5959;
+	cursor: pointer;
+}
+
+.delete:hover {
+	background-color: red;
+}
+
+.add_button {
+	padding: 0.8em 1em;
+	background-color: #74dcdc;
+	margin: 1em 0;
+	cursor: pointer;
+	border-radius: 1em;
+}
+
+.add_button:hover {
+	background-color: aqua;
+}
+
+.logout_button {
+	background: #ea7676;
+	color: white;
+	padding: 0.4em 1.2em;
+	cursor: pointer;
+	border-radius: 20px;
+}
+
+.logout_button:hover {
+	background-color: #fb8080;
+}
