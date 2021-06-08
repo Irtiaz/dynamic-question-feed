@@ -16,36 +16,10 @@ export default class Question extends React.Component {
 	 * anything else = normal text
 	 * */
 
-	state = {
-		ques: [],
-		quesImageBase64: "",
-		quesImageWidth: 0,
-		quesImageHeight: 0,
-		ans: [],
-		ansImageBase64: "",
-		ansImageWidth: 0,
-		ansImageHeight: 0
-	};
-
 	
-
-
-	static getDerivedStateFromProps(props, state) {
-		const quesLines = getLines(props.ques);
-		const ansLines = getLines(props.ans);
-
-		return {
-			ques: quesLines,
-			quesImageBase64: props.quesImageBase64 || "",
-			quesImageWidth: props.quesImageWidth,
-			quesImageHeight: props.quesImageHeight,
-			ans: ansLines,
-			ansImageBase64: props.ansImageBase64 || "",
-			ansImageWidth: props.ansImageWidth,
-			ansImageHeight: props.ansImageHeight,
-			showSoution: false
-		};
-	}
+	state = {
+		showSolution: false
+	};
 
 
 	handleToggle = () => {
@@ -56,14 +30,28 @@ export default class Question extends React.Component {
 
 
 	render() {
-		const QuesImage = getImage(this.state.quesImageBase64, this.state.quesImageWidth, this.state.quesImageHeight);
-		let AnsImage = getImage(this.state.ansImageBase64, this.state.ansImageWidth, this.state.ansImageHeight);
+		const quesLines = getLines(this.props.ques);
+		const ansLines = getLines(this.props.ans);
+
+		const properties = {
+			ques: quesLines,
+			quesImageBase64: this.props.quesImageBase64 || "",
+			quesImageWidth: this.props.quesImageWidth,
+			quesImageHeight: this.props.quesImageHeight,
+			ans: ansLines,
+			ansImageBase64: this.props.ansImageBase64 || "",
+			ansImageWidth: this.props.ansImageWidth,
+			ansImageHeight: this.props.ansImageHeight,
+		};
+
+		const QuesImage = getImage(properties.quesImageBase64, properties.quesImageWidth, properties.quesImageHeight);
+		let AnsImage = getImage(properties.ansImageBase64, properties.ansImageWidth, properties.ansImageHeight);
 
 		
 		let Solution = null;
 		if (this.state.showSolution) {
 			Solution = <div className={styles.solution_container}>
-				{this.state.ans}
+				{properties.ans}
 				{AnsImage}
 			</div>;
 		}
@@ -73,7 +61,7 @@ export default class Question extends React.Component {
 		return (
 			<div className={styles.container}>
 				<MathJax.Provider>
-					{this.state.ques}
+					{properties.ques}
 					{QuesImage}
 					<div style={{textAlign: "center"}}>
 						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
