@@ -88,6 +88,7 @@ export default class Question extends React.Component {
 
 
 function getLines(text){
+	if (text === undefined) return;
 	const rawLines = parseMathText(text);
 	const lines = [];
 	for (let line of rawLines) {
