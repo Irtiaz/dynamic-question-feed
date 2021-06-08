@@ -66,7 +66,7 @@ class Feed extends React.Component {
 
 	handleLogout = () => {
 		localStorage.removeItem('adminToken');
-		Router.replace('/admin');
+		Router.replace('/');
 	}
 
 
