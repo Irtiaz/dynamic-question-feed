@@ -1,12 +1,16 @@
-import '../styles/globals.css'
-
+import Navbar from './Components/Navbar.js';
 import Container from './Components/Container.js';
+
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<Container>
-			<Component {...pageProps} />
-		</Container>
+		<>
+			<Navbar />
+			<Container>
+				<Component {...pageProps} />
+			</Container>
+		</>
 	);
 }
 

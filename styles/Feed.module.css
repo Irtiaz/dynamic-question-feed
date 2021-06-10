@@ -8,11 +8,20 @@
 	border-radius: 2em;
 }
 
-.container_div {
+.question_container {
 	border: 2px solid #16a57c;
 	border-radius: 25px;
 	padding: 1em;
 	margin: 0 0 1.5em 0;
+}
+
+.question_wrapper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.question_item {
+	width: 98%;
 }
 
 .edit {

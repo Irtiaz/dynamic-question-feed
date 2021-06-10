@@ -77,18 +77,23 @@ class Feed extends React.Component {
 			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = this.state.questionList[i];
 
 			const QuestionItem = 
-				<div className={styles.container_div} key={_id} >
-					<Question 
-						ques={ques}
-						quesImageBase64={quesImageBase64}
-						quesImageWidth={quesImageWidth}
-						quesImageHeight={quesImageHeight}
-						ans={ans}
-						ansImageBase64={ansImageBase64 || ""}
-						ansImageWidth={ansImageWidth}
-						ansImageHeight={ansImageHeight}
-						keywords={keywords}
-					/>
+				<div className={styles.question_container} key={_id} >
+					<div className={styles.question_wrapper}>
+						<span>{i + 1}</span>
+						<div className={styles.question_item}>
+							<Question 
+								ques={ques}
+								quesImageBase64={quesImageBase64}
+								quesImageWidth={quesImageWidth}
+								quesImageHeight={quesImageHeight}
+								ans={ans}
+								ansImageBase64={ansImageBase64 || ""}
+								ansImageWidth={ansImageWidth}
+								ansImageHeight={ansImageHeight}
+								keywords={keywords}
+							/>
+						</div>
+					</div>
 					<div className={styles.button_div} >
 						<button className={styles.edit} onClick={() => this.handleEdit(i)}>Edit</button>
 						<button className={styles.delete} onClick={() => this.handleDelete(i)}>Delete</button>

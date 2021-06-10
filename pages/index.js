@@ -100,14 +100,9 @@ export default class Home extends React.Component {
 		return (
 			<>
 				<Head>
-					<title>Interesting Questions</title>
+					<title>Brain Freeze</title>
 				</Head>
 				<div>
-					<div className={styles.admin_login}>
-						<Link href="/admin">
-							<a>Login as admin</a>
-						</Link>
-					</div>
 					<div>
 						<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
 						<div className={styles.keywords_container}>

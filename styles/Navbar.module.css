@@ -1,0 +1,36 @@
+.container_div {
+	background-color: #343a40;
+	color: white;
+}
+
+.nav_container {
+	display: flex;
+	width: 90%;
+	max-width: 900px;
+	margin: 0 auto;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header h2 {
+	margin: 0;
+	font-weight: 1;
+}
+
+.nav ul {
+	list-style: none;
+	display: flex;
+}
+
+.nav li {
+	margin-left: 2em;
+}
+
+.nav_container a, .nav_container a:visited {
+	color: #c7c6c6;
+	transition: color 0.3s ease 0s;
+}
+
+.nav_container a:hover {
+	color: white;
+}
