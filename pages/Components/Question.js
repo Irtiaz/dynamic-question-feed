@@ -55,6 +55,17 @@ export default class Question extends React.Component {
 				{AnsImage}
 			</div>;
 		}
+		
+		const Keywords = [];
+		if (this.props.keywords) {
+			for (let keyword in this.props.keywords) {
+				if (JSON.parse(this.props.keywords[keyword])) {
+					Keywords.push(
+						<span key={shortid.generate()}>{keyword}</span>
+					);
+				}
+			}
+		}
 
 		const toggleButtonText = this.state.showSolution? "Hide Solution" : "Show Solution";
 
@@ -63,6 +74,9 @@ export default class Question extends React.Component {
 				<MathJax.Provider>
 					{properties.ques}
 					{QuesImage}
+					<div className={styles.keywords_container}>
+						{Keywords}
+					</div>
 					<div style={{textAlign: "center"}}>
 						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
 					</div>

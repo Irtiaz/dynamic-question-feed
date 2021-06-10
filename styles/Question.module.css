@@ -24,3 +24,21 @@
 	padding: 1em;
 	margin: 1em 0;
 }
+
+
+.keywords_container {
+	margin: 1em 0;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	font-size: 0.7rem;
+}
+
+.keywords_container span {
+	margin: 0.5em;
+	background-color: tomato;
+	color: white;
+	padding: 0.5em 1em;
+	border-radius: 20px;
+	transition: border-radius 0.5s ease 0s;
+}

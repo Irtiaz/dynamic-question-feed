@@ -10,7 +10,12 @@ const questionSchema = new Schema({
 	ans: String,
 	ansImageBase64: String,
 	ansImageWidth: Number,
-	ansImageHeight: Number
+	ansImageHeight: Number,
+
+	keywords: {
+		type: Map,
+		of: String
+	}
 });
 
 let exp;

@@ -1,9 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
+import shortid from 'shortid';
 
 import Question from '../Components/Question.js';
 import withAuth from '../Components/withAuth.js';
 import styles from '../../styles/CreateQues.module.css';
+
+import keywords from '../../lib/keywordsList.js';
 
 class CreateQues extends React.Component {
 
@@ -15,7 +18,9 @@ class CreateQues extends React.Component {
 		ans: "",
 		ansImageBase64: "",
 		ansImageWidth: 0,
-		ansImageHeight: 0
+		ansImageHeight: 0,
+
+		keywords: {}
 	};
 
 	quesAreaRef = React.createRef();
@@ -27,16 +32,32 @@ class CreateQues extends React.Component {
 	_id = undefined;
 	
 	componentDidMount = () => {
+		const stateKeywords = {};
+		for (let keyword of keywords) {
+			stateKeywords[keyword] = false;
+		}
+
 		const question = JSON.parse(sessionStorage.getItem('question'));
 		if (question != null) {
 			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight} = question;
 			this.quesAreaRef.current.value = ques;
 			this.ansAreaRef.current.value = ans;
+			
+			for (let keyword in question.keywords) {
+				stateKeywords[keyword] = JSON.parse(question.keywords[keyword]);
+			}
+
 			this.setState({
-				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight
+				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight,
+				keywords: stateKeywords
 			});
 			this._id = question._id;
-		}		
+		}
+		else {
+			this.setState({
+				keywords: stateKeywords
+			});
+		}
 	}
 
 
@@ -128,6 +149,20 @@ class CreateQues extends React.Component {
 	}
 
 
+	handleCheck = (index) => {
+		const key = keywords[index];
+
+		const copy = {};
+		Object.assign(copy, this.state.keywords);
+
+		copy[key] = !copy[key];
+
+		this.setState({
+			keywords: copy
+		});
+	}
+
+
 	handleAdd = async (editing) => {
 		const data = {
 			ques: this.state.ques,
@@ -138,7 +173,9 @@ class CreateQues extends React.Component {
 			ans: this.state.ans,
 			ansImageBase64: this.state.ansImageBase64 || "",
 			ansImageWidth: this.state.ansImageWidth,
-			ansImageHeight: this.state.ansImageHeight
+			ansImageHeight: this.state.ansImageHeight,
+
+			keywords: this.state.keywords
 		};
 
 		if (editing) data["_id"] = this._id;
@@ -177,8 +214,25 @@ class CreateQues extends React.Component {
 				ansImageBase64={this.state.ansImageBase64}
 				ansImageWidth={this.state.ansImageWidth}
 				ansImageHeight={this.state.ansImageHeight}
+				keywords={this.state.keywords}
 			/>;
 		}
+
+		
+		const KeywordsCheckboxes = [];
+		for (let i = 0; i < keywords.length; ++i) {
+			const keyword = keywords[i];
+
+			KeywordsCheckboxes.push(
+				<React.Fragment key={shortid.generate()}>
+					<label>
+						{keyword}
+						<input type="checkbox" checked={this.state.keywords[keyword]} onChange={() => this.handleCheck(i)} />
+					</label>
+				</React.Fragment>
+			);
+		}
+
 
 		const ChooseQuesImage = 
 			<div>
@@ -227,6 +281,11 @@ class CreateQues extends React.Component {
 							{ChooseAnsImage}
 							{ClearAnsImage}
 						</div>
+						
+						<div className={styles.keywords_container}>
+							{KeywordsCheckboxes}
+						</div>
+
 						<button className={styles.refresh_button} onClick={this.handleRefresh}>Refresh</button>
 						<button className={styles.add_button} onClick={() => this.handleAdd(false)}>Add New Question</button>
 						{EditButton}

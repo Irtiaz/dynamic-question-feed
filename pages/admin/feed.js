@@ -74,7 +74,7 @@ class Feed extends React.Component {
 		
 		const Questions = [];
 		for (let i = 0; i < this.state.questionList.length; ++i) {
-			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight} = this.state.questionList[i];
+			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = this.state.questionList[i];
 
 			const QuestionItem = 
 				<div className={styles.container_div} key={_id} >
@@ -87,6 +87,7 @@ class Feed extends React.Component {
 						ansImageBase64={ansImageBase64 || ""}
 						ansImageWidth={ansImageWidth}
 						ansImageHeight={ansImageHeight}
+						keywords={keywords}
 					/>
 					<div className={styles.button_div} >
 						<button className={styles.edit} onClick={() => this.handleEdit(i)}>Edit</button>
