@@ -10,5 +10,8 @@
 }
 
 .email {
-	color: blue;
+	background-color: #baffff;
+	margin-bottom: 1em;
+	padding: 1.2em 0;
+	text-align: center;
 }
