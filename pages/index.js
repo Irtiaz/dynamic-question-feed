@@ -10,6 +10,8 @@ import keywords from '../lib/keywordsList.js';
 import Question from './Components/Question.js';
 import styles from '../styles/Home.module.css';
 
+let scrollToComponent;
+
 export default class Home extends React.Component {
 
 	state = {
@@ -18,6 +20,10 @@ export default class Home extends React.Component {
 	};
 	
 	questionRefs = [];
+
+	componentDidMount = () => {
+		scrollToComponent = require('react-scroll-to-component');
+	}
 
 	handleCheck = (index) => {
 		const key = keywords[index];
@@ -50,10 +56,14 @@ export default class Home extends React.Component {
 		});
 	}
 
+	handleScroll = (event) => {
+		event.preventDefault();
+		const index = event.target.gotoInput.value - 1;
+		scrollToComponent(this.questionRefs[index].current);
+	}
+
 
 	render() {
-
-
 		let ClearFilterButton = null;	
 
 		const currentFilters = [];
@@ -81,17 +91,17 @@ export default class Home extends React.Component {
 		}
 
 		
-		//this.questionRefs = [];
-		//for (let i = 0; i < questionList.length; ++i) {
-			//this.quesRefs.push(React)
-		//}
+		this.questionRefs = [];
+		for (let i = 0; i < questionList.length; ++i) {
+			this.questionRefs.push(React.createRef());
+		}
 
 
 		const Questions = [];
 		for (let i = 0; i < questionList.length; ++i) {
 			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = questionList[i];
 			const QuestionItem = 
-				<div key={_id} className={styles.question_wrapper}>
+				<div key={_id} className={styles.question_wrapper} ref={this.questionRefs[i]} >
 					<span>{i + 1}</span>
 					<div className={styles.question_item}>
 						<Question 
@@ -129,11 +139,14 @@ export default class Home extends React.Component {
 			}
 			filterButtonText = "Hide filters";
 
+		}
+
+		if (questionList.length > 1) {
 			GotoInput = <div>
-				<form>
-					Goto question number
-					<input type="number" min="1" max={questionList.length}/>
-					<button type="submit">Go</button>
+				<form onSubmit={this.handleScroll} className={styles.scroll_container} >
+					Goto
+					<input type="number" min="1" max={questionList.length} name="gotoInput" placeholder={questionList.length} />
+					<button type="submit" className={styles.filter_button}>Go</button>
 				</form>
 			</div>;
 		}
@@ -146,9 +159,13 @@ export default class Home extends React.Component {
 				</Head>
 				<div>
 					<div>
-						<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
-						{ClearFilterButton}
-						{GotoInput}
+						<div className={styles.filter_and_navigator}>
+							<div>
+								<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
+								{ClearFilterButton}
+							</div>
+							{GotoInput}
+						</div>
 						<div className={styles.keywords_container}>
 							{KeywordsCheckboxes}
 						</div>
@@ -171,7 +188,7 @@ export async function getStaticProps(context) {
 		});
 	}
 
-	const questions = await QuestionModel.find({}).sort({_id: -1});
+	const questions = await QuestionModel.find({});
 
 	return {
 		props: {

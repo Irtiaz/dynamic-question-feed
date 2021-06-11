@@ -132,7 +132,7 @@ export async function getStaticProps(context) {
 		});
 	}
 
-	const questions = await QuestionModel.find({}).sort({_id: -1});
+	const questions = await QuestionModel.find({});
 
 	return {
 		props: {
