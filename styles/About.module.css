@@ -1,10 +1,10 @@
 .container {
-	color: #fbf1c7;
+	color: var(--fg0);
 }
 
 .box {
 	text-align: center;
-	background-color: #665c54;
+	background-color: var(--bg3);
 	padding: 1.2em 0;
 	border-radius: 20px;
 }
@@ -14,7 +14,7 @@
 }
 
 .container a, .container a:visited {
-	color: #458588;
+	color: var(--dark-blue);
 }
 
 .container a:hover {

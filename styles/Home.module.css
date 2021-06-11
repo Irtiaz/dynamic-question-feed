@@ -1,7 +1,7 @@
 .filter_button {
 	padding: 0.6em;
 	margin-right: 1.5em;
-	background-color: #d65d0e;
+	background-color: var(--dark-orange);
 	color: #ebdbb2;
 	border-radius: 20px;
 	cursor: pointer;
@@ -9,43 +9,18 @@
 }
 
 .filter_button:hover {
-	background-color: #fe8019;
+	background-color: var(--light-orange);
 	border-radius: 0;
 }
 
 .question_wrapper {
 	display: flex;
 	justify-content: space-between;
-	color: #fbf1c7;
+	color: var(--fg0);
 }
 
 .question_item {
 	width: 98%;
-}
-
-.keywords_container {
-	margin: 2em 0;
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: flex-start;
-	font-size: 0.7rem;
-}
-
-.keywords_container label {
-	display: flex;
-	margin: 0.5em;
-	background-color: #cc241d;
-	color: white;
-	padding: 0.5em 1em;
-	border-radius: 20px;
-	cursor: pointer;
-	transition: border-radius 0.5s ease 0s;
-}
-
-
-.keywords_container label:hover {
-	background-color: #fb4934;
-	border-radius: 0;
 }
 
 .filter_and_navigator {
@@ -56,16 +31,16 @@
 
 .scroll_container {
 	margin: 1em 0 1em 0;
-	color: #fbf1c7;
+	color: var(--fg0);
 }
 
 .scroll_container input {
 	margin: 0 0.5em;
 	padding: 0.4em;
-	background-color: #928374;
-	color: #fbf1c7;
+	background-color: var(--dark-grey);
+	color: var(--fg0);
 }
 
 .scroll_container input::placeholder {
-	color: #d5c4a1;
+	color: var(--fg2);
 }

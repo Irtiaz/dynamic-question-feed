@@ -61,7 +61,7 @@ export default class Question extends React.Component {
 			for (let keyword in this.props.keywords) {
 				if (JSON.parse(this.props.keywords[keyword])) {
 					Keywords.push(
-						<span key={shortid.generate()}>{keyword}</span>
+						<span key={shortid.generate()} className="keyword not_hoverable_keyword">{keyword}</span>
 					);
 				}
 			}
@@ -74,7 +74,7 @@ export default class Question extends React.Component {
 				<MathJax.Provider>
 					{properties.ques}
 					{QuesImage}
-					<div className={styles.keywords_container}>
+					<div className="keywords_container">
 						{Keywords}
 					</div>
 					<div style={{textAlign: "center"}}>

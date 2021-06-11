@@ -4,8 +4,7 @@
 }
 
 .container_div {
-	background-color: #3c3836;
-	color: white;
+	background-color: var(--bg1);
 }
 
 .nav_container {
@@ -23,13 +22,13 @@
 }
 
 .header a {
-	color: #d79921;
+	color: var(--dark-yellow);
 	letter-spacing: 0.05em;
 	font-family: "kung-fu-master";
 }
 
 .header a:hover {
-	color: #fabd2f;
+	color: var(--light-yellow);
 }
 
 .nav ul {
@@ -42,10 +41,10 @@
 }
 
 .nav a, .nav a:visited {
-	color: #ebdbb2;
+	color: var(--fg);
 	transition: color 0.3s ease 0s;
 }
 
 .nav a:hover {
-	color: #fbf1c7;
+	color: var(--fg0);
 }

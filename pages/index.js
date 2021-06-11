@@ -130,7 +130,7 @@ export default class Home extends React.Component {
 
 				KeywordsCheckboxes.push(
 					<React.Fragment key={shortid.generate()}>
-						<label>
+						<label className="keyword hoverable_keyword" >
 							{keyword}
 							<input type="checkbox" checked={this.state.keywords[keyword]} onChange={() => this.handleCheck(i)} />
 						</label>
@@ -166,7 +166,7 @@ export default class Home extends React.Component {
 							</div>
 							{GotoInput}
 						</div>
-						<div className={styles.keywords_container}>
+						<div className="keywords_container" >
 							{KeywordsCheckboxes}
 						</div>
 					</div>

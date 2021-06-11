@@ -8,26 +8,26 @@
 	font-size: 2rem;
 	margin-bottom: 1em;
 	padding: 0.4em;
-	background-color: #928374;
+	background-color: var(--dark-grey);
 }
 
 .form button {
 	font-size: 1.2rem;
 	padding: 0.6em 1em;
-	background-color: #d65d0e;
-	color: #ebdbb2;
+	background-color: var(--dark-orange);
+	color: var(--fg);
 	border-radius: 20px;
 	cursor: pointer;
 	transition: all 0.3s ease 0s;
 }
 
 .form button:hover {
-	background-color: #fe8019;
+	background-color: var(--light-orange);
 	border-radius: 0;
 }
 
 .form input::placeholder {
-	color: #d5c4a1;
+	color: var(--fg2);
 }
 
 .wrong_password {

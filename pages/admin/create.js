@@ -225,7 +225,7 @@ class CreateQues extends React.Component {
 
 			KeywordsCheckboxes.push(
 				<React.Fragment key={shortid.generate()}>
-					<label>
+					<label className="keyword hoverable_keyword">
 						{keyword}
 						<input type="checkbox" checked={this.state.keywords[keyword]} onChange={() => this.handleCheck(i)} />
 					</label>
@@ -282,7 +282,7 @@ class CreateQues extends React.Component {
 							{ClearAnsImage}
 						</div>
 						
-						<div className={styles.keywords_container}>
+						<div className="keywords_container">
 							{KeywordsCheckboxes}
 						</div>
 
