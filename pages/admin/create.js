@@ -277,7 +277,7 @@ class CreateQues extends React.Component {
 						</div>
 						<div className={styles.container}>
 							Enter Solution Text Here
-							<textarea rows="4" cols="50" className={styles.input_area} spellCheck={false} ref={this.ansAreaRef} onChange={this.handleChangeAns} placeholder="Solution" />
+							<textarea rows="4" cols="50" className={`${styles.input_area} ${styles.solution_input}`} spellCheck={false} ref={this.ansAreaRef} onChange={this.handleChangeAns} placeholder="Solution" />
 							{ChooseAnsImage}
 							{ClearAnsImage}
 						</div>

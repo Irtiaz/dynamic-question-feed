@@ -16,6 +16,8 @@ export default class Home extends React.Component {
 		keywords: {},
 		showFilters: false
 	};
+	
+	questionRefs = [];
 
 	handleCheck = (index) => {
 		const key = keywords[index];
@@ -51,23 +53,6 @@ export default class Home extends React.Component {
 
 	render() {
 
-		const KeywordsCheckboxes = [];
-		let filterButtonText = "Show filters";
-		if (this.state.showFilters) {
-			for (let i = 0; i < keywords.length; ++i) {
-				const keyword = keywords[i];
-
-				KeywordsCheckboxes.push(
-					<React.Fragment key={shortid.generate()}>
-						<label>
-							{keyword}
-							<input type="checkbox" checked={this.state.keywords[keyword]} onChange={() => this.handleCheck(i)} />
-						</label>
-					</React.Fragment>
-				);
-			}
-			filterButtonText = "Hide filters";
-		}
 
 		let ClearFilterButton = null;	
 
@@ -95,6 +80,13 @@ export default class Home extends React.Component {
 
 		}
 
+		
+		//this.questionRefs = [];
+		//for (let i = 0; i < questionList.length; ++i) {
+			//this.quesRefs.push(React)
+		//}
+
+
 		const Questions = [];
 		for (let i = 0; i < questionList.length; ++i) {
 			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = questionList[i];
@@ -118,6 +110,35 @@ export default class Home extends React.Component {
 			Questions.push(QuestionItem);
 		}
 
+		const KeywordsCheckboxes = [];
+		let GotoInput = null;
+		let filterButtonText = "Show filters";
+
+		if (this.state.showFilters) {
+			for (let i = 0; i < keywords.length; ++i) {
+				const keyword = keywords[i];
+
+				KeywordsCheckboxes.push(
+					<React.Fragment key={shortid.generate()}>
+						<label>
+							{keyword}
+							<input type="checkbox" checked={this.state.keywords[keyword]} onChange={() => this.handleCheck(i)} />
+						</label>
+					</React.Fragment>
+				);
+			}
+			filterButtonText = "Hide filters";
+
+			GotoInput = <div>
+				<form>
+					Goto question number
+					<input type="number" min="1" max={questionList.length}/>
+					<button type="submit">Go</button>
+				</form>
+			</div>;
+		}
+
+
 		return (
 			<>
 				<Head>
@@ -127,6 +148,7 @@ export default class Home extends React.Component {
 					<div>
 						<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
 						{ClearFilterButton}
+						{GotoInput}
 						<div className={styles.keywords_container}>
 							{KeywordsCheckboxes}
 						</div>
