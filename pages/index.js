@@ -58,19 +58,25 @@ export default class Home extends React.Component {
 		}
 
 		
+
 		const currentFilters = [];
 		for (let keyword in this.state.keywords) {
 			if (this.state.keywords[keyword]) currentFilters.push(keyword);
 		}
 
 		const questionList = JSON.parse(this.props.questions);
-		for (let i = questionList.length - 1; i >= 0; --i) {
-			const questionKeywords = questionList[i].keywords;
-			for (let filter of currentFilters) {
-				if (!JSON.parse(questionKeywords[filter])) {
-					questionList.splice(i, 1)
-					break;
+
+		if (currentFilters.length > 0) {
+			for (let i = questionList.length - 1; i >= 0; --i) {
+				const questionKeywords = questionList[i].keywords;
+				let spliceIt = true;
+				for (let filter of currentFilters) {
+					if (JSON.parse(questionKeywords[filter])) {
+						spliceIt = false;
+						break;
+					}
 				}
+				if (spliceIt) questionList.splice(i, 1);
 			}
 		}
 
@@ -127,7 +133,7 @@ export async function getStaticProps(context) {
 		});
 	}
 
-	const questions = await QuestionModel.find({});
+	const questions = await QuestionModel.find({}).sort({_id: -1});
 
 	return {
 		props: {

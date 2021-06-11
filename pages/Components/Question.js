@@ -113,7 +113,8 @@ function getImage(base64, width, height) {
 		<div
 			style={{
 				display: "flex",
-				justifyContent: "center"
+				justifyContent: "center",
+				margin: "3em 0"
 			}}
 		>
 			<Image 

@@ -17,7 +17,7 @@ export default class About extends React.Component {
 						Developer : Md Irtiaz Kabir
 					</div>
 					<div className={styles.contact}>
-						If you have any interesting question that you want share with us or you have noticed a calculation/concept error or a bug in our site then please feel free to contact us <br /> <br /> <br />
+						If you have any interesting question that you want to share with us or you have noticed a calculation/concept error or a bug in our site then please feel free to contact us <br /> <br /> <br />
 						E-mail :
 						<div className={styles.box}>
 							imtiazkabir.imtiaz@gmail.com<br />
