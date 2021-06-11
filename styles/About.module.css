@@ -1,6 +1,10 @@
-.credits {
+.container {
+	color: #fbf1c7;
+}
+
+.box {
 	text-align: center;
-	background-color: pink;
+	background-color: #665c54;
 	padding: 1.2em 0;
 	border-radius: 20px;
 }
@@ -9,9 +13,10 @@
 	margin: 2em 0;
 }
 
-.email {
-	background-color: #baffff;
-	margin-bottom: 1em;
-	padding: 1.2em 0;
-	text-align: center;
+.container a, .container a:visited {
+	color: #458588;
+}
+
+.container a:hover {
+	text-decoration: underline;
 }

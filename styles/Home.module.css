@@ -1,19 +1,21 @@
 .filter_button {
 	padding: 0.6em;
-	background-color: #f3da35;
+	background-color: #d65d0e;
+	color: #ebdbb2;
 	border-radius: 20px;
 	cursor: pointer;
 	transition: all 0.3s ease 0s;
 }
 
 .filter_button:hover {
-	background-color: #ffdd00;
+	background-color: #fe8019;
 	border-radius: 0;
 }
 
 .question_wrapper {
 	display: flex;
 	justify-content: space-between;
+	color: #fbf1c7;
 }
 
 .question_item {
@@ -31,7 +33,7 @@
 .keywords_container label {
 	display: flex;
 	margin: 0.5em;
-	background-color: tomato;
+	background-color: #cc241d;
 	color: white;
 	padding: 0.5em 1em;
 	border-radius: 20px;
@@ -41,5 +43,6 @@
 
 
 .keywords_container label:hover {
+	background-color: #fb4934;
 	border-radius: 0;
 }

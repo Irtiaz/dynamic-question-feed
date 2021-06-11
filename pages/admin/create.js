@@ -262,7 +262,7 @@ class CreateQues extends React.Component {
 					<Head>
 						<title>Create Question</title>
 					</Head>
-					<div>
+					<div className={styles.page}>
 
 						<div className={styles.instructions}>
 							Wrap tex around 2 @ signs for block level tex or <br />
@@ -287,7 +287,8 @@ class CreateQues extends React.Component {
 						</div>
 
 						<button className={styles.refresh_button} onClick={this.handleRefresh}>Refresh</button>
-						<button className={styles.add_button} onClick={() => this.handleAdd(false)}>Add New Question</button>
+						<button className={styles.add_button} onClick={() => this.handleAdd(false)}>Add new question</button>
+
 						{EditButton}
 
 						{Preview}

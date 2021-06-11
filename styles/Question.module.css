@@ -2,9 +2,10 @@
 	margin: 0 0 1.3em 0;
     padding: 0.5em 0.5em;
     border: 1px solid grey;
-    background-color: rgb(217, 234, 241);
+    background-color: #504945;
+	color: #fbf1c7;
     border-radius: 0.5em;
-    box-shadow: 1em 1em 1em #e4e1e1;
+    box-shadow: 1em 1em 1em #3c3836;
 }
 
 .toggle_button {
@@ -20,7 +21,7 @@
 }
 
 .solution_container {
-	border: 5px solid #f69bab;
+	border: 5px solid #458588;
 	padding: 1em;
 	margin: 1em 0;
 }
@@ -36,7 +37,7 @@
 
 .keywords_container span {
 	margin: 0.5em;
-	background-color: tomato;
+	background-color: #fb4934;
 	color: white;
 	padding: 0.5em 1em;
 	border-radius: 20px;

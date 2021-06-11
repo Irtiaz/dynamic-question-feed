@@ -1,7 +1,11 @@
+.page {
+	color: #fbf1c7;
+}
+
 .instructions {
-	padding: 0.5em;
-	margin-bottom: 1em;
-	background-color: #c1d1e1;
+	background-color: #665c54;
+	padding: 1.2em;
+	border-radius: 20px;
 }
 
 .input_area {
@@ -10,7 +14,16 @@
 	font-size: 1.3rem;
 	height: 10em;
 	resize: vertical;
+	background-color: #665c54;
+	color: #fbf1c7;
+	padding: 0.8em;
+	border-radius: 20px;
 }
+
+.input_area::placeholder {
+	color: #d5c4a1;
+}
+
 
 .refresh_button {
 	padding: 0.8em 1em;
@@ -28,14 +41,14 @@
 
 .add_button {
 	padding: 0.8em 1em;
-	background-color: #74dcdc;
+	background-color: #458588;
+	color: #fbf1c7;
 	margin: 0 1em;
-	color: black;
 	border-radius: 1em;
 }
 
 .add_button:hover {
-	background-color: aqua;
+	background-color: #83a598;
 }
 
 
@@ -54,6 +67,7 @@
 	background-color: red;
 }
 
+
 .keywords_container {
 	margin: 2em 0;
 	display: flex;
@@ -65,7 +79,7 @@
 .keywords_container label {
 	display: flex;
 	margin: 0.5em;
-	background-color: tomato;
+	background-color: #cc241d;
 	color: white;
 	padding: 0.5em 1em;
 	border-radius: 20px;
@@ -75,5 +89,6 @@
 
 
 .keywords_container label:hover {
+	background-color: #fb4934;
 	border-radius: 0;
 }

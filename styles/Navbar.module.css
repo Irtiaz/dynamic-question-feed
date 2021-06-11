@@ -1,5 +1,10 @@
+@font-face {
+	font-family: "kung-fu-master";
+	src: url("KungFuMaster.otf");
+}
+
 .container_div {
-	background-color: #343a40;
+	background-color: #3c3836;
 	color: white;
 }
 
@@ -17,6 +22,16 @@
 	font-weight: 1;
 }
 
+.header a {
+	color: #d79921;
+	letter-spacing: 0.05em;
+	font-family: "kung-fu-master";
+}
+
+.header a:hover {
+	color: #fabd2f;
+}
+
 .nav ul {
 	list-style: none;
 	display: flex;
@@ -26,11 +41,11 @@
 	margin-left: 2em;
 }
 
-.nav_container a, .nav_container a:visited {
-	color: #c7c6c6;
+.nav a, .nav a:visited {
+	color: #ebdbb2;
 	transition: color 0.3s ease 0s;
 }
 
-.nav_container a:hover {
-	color: white;
+.nav a:hover {
+	color: #fbf1c7;
 }

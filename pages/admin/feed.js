@@ -113,7 +113,7 @@ class Feed extends React.Component {
 					<div style={{textAlign: "right"}}>
 						<button onClick={this.handleLogout} className={styles.logout_button}>Logout</button>
 					</div>
-					<button className={styles.add_button} onClick={this.handleAdd}>Add New Question</button>
+					<button className={styles.add_button} onClick={this.handleAdd}>Add new question</button>
 					{Questions}
 				</div>
 			</>

@@ -10,8 +10,8 @@ export default class About extends React.Component {
 				<Head>
 					<title>About this project</title>
 				</Head>
-				<div>
-					<div className={styles.credits}>
+				<div className={styles.container}>
+					<div className={styles.box}>
 						<b>Credits</b> <br />
 						Question review and solution : Md Imtiaz Kabir <br />
 						Developer : Md Irtiaz Kabir
@@ -19,7 +19,7 @@ export default class About extends React.Component {
 					<div className={styles.contact}>
 						If you have any interesting question that you want share with us or you have noticed a calculation/concept error or a bug in our site then please feel free to contact us <br /> <br /> <br />
 						E-mail :
-						<div className={styles.email}>
+						<div className={styles.box}>
 							imtiazkabir.imtiaz@gmail.com<br />
 							irtiazkabir.irtiaz@gmail.com
 						</div>

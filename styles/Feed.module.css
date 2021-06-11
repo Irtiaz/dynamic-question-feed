@@ -17,6 +17,7 @@
 
 .question_wrapper {
 	display: flex;
+	color: #fbf1c7;
 	justify-content: space-between;
 }
 
@@ -34,25 +35,31 @@
 }
 
 .delete {
-	background-color: #ff5959;
+	background-color: #cc241d;
+	color: #fbf1c7;
 	cursor: pointer;
 }
 
 .delete:hover {
-	background-color: red;
+	background-color: #fb4934;
 }
 
+
 .add_button {
-	padding: 0.8em 1em;
-	background-color: #74dcdc;
-	margin: 1em 0;
+	padding: 0.6em;
+	background-color: #d65d0e;
+	color: #ebdbb2;
+	border-radius: 20px;
 	cursor: pointer;
-	border-radius: 1em;
+	margin: 1em;
+	transition: all 0.3s ease 0s;
 }
 
 .add_button:hover {
-	background-color: aqua;
+	background-color: #fe8019;
+	border-radius: 0;
 }
+
 
 .logout_button {
 	background: #ea7676;
