@@ -36,6 +36,18 @@ export default class Home extends React.Component {
 		});
 	}
 
+	clearFilters = () => {
+		const keywordsCopy = {};
+		Object.assign(keywordsCopy, this.state.keywords);
+		for (let keyword in keywordsCopy) {
+			keywordsCopy[keyword] = false;
+		}
+		this.setState({
+			showFilters: false,
+			keywords: keywordsCopy
+		});
+	}
+
 
 	render() {
 
@@ -57,7 +69,7 @@ export default class Home extends React.Component {
 			filterButtonText = "Hide filters";
 		}
 
-		
+		let ClearFilterButton = null;	
 
 		const currentFilters = [];
 		for (let keyword in this.state.keywords) {
@@ -78,6 +90,9 @@ export default class Home extends React.Component {
 				}
 				if (spliceIt) questionList.splice(i, 1);
 			}
+
+			ClearFilterButton = <button className={styles.filter_button} onClick={this.clearFilters}>Clear Filters</button>
+
 		}
 
 		const Questions = [];
@@ -111,6 +126,7 @@ export default class Home extends React.Component {
 				<div>
 					<div>
 						<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
+						{ClearFilterButton}
 						<div className={styles.keywords_container}>
 							{KeywordsCheckboxes}
 						</div>
