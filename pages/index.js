@@ -59,7 +59,7 @@ export default class Home extends React.Component {
 	handleScroll = (event) => {
 		event.preventDefault();
 		const index = event.target.gotoInput.value - 1;
-		scrollToComponent(this.questionRefs[index].current);
+		if (index) scrollToComponent(this.questionRefs[index].current);
 	}
 
 
