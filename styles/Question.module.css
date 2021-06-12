@@ -11,13 +11,14 @@
 .toggle_button {
     padding: 0.5em;
     margin: 1em 0;
-    background-color: #4df14d;
+    background-color: var(--dark-yellow);
+	font-weight: bold;
     border-radius: 1em;
     cursor: pointer;
 }
 
 .toggle_button:hover {
-	background-color: #8df78d;
+	background-color: var(--light-yellow);
 }
 
 .solution_container {
