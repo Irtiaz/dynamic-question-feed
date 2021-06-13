@@ -23,13 +23,10 @@
 	width: 98%;
 }
 
-.filter_and_navigator {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
 .scroll_container {
+	position: fixed;
+	bottom: 0;
+	right: 0;
 	margin: 1em 0 1em 0;
 	color: var(--fg0);
 }

@@ -146,9 +146,7 @@ export default class Home extends React.Component {
 		if (questionList.length > 1) {
 			GotoInput = <div>
 				<form onSubmit={this.handleScroll} className={styles.scroll_container} >
-					Goto
 					<input type="number" min="1" max={questionList.length} name="gotoInput" placeholder={questionList.length} />
-					<button type="submit" className={styles.filter_button}>Go</button>
 				</form>
 			</div>;
 		}
@@ -161,18 +159,14 @@ export default class Home extends React.Component {
 				</Head>
 				<div>
 					<div>
-						<div className={styles.filter_and_navigator}>
-							<div>
-								<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
-								{ClearFilterButton}
-							</div>
-							{GotoInput}
-						</div>
+						<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
+						{ClearFilterButton}
 						<div className="keywords_container" >
 							{KeywordsCheckboxes}
 						</div>
 					</div>
 					{Questions}
+					{GotoInput}
 				</div>
 			</>
 		);
