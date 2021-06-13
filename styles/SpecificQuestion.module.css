@@ -1,4 +1,4 @@
-.link_container {
+.link_container, .loading {
 	color: var(--fg0);
 }
 
