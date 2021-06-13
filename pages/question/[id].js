@@ -9,14 +9,13 @@ import Question from '../Components/Question.js';
 import styles from '../../styles/SpecificQuestion.module.css';
 
 export default function SpecificQuestion(props) {
-	const question = JSON.parse(props.question);
-
 	const router = useRouter();
 
 	let Content;
 	if (router.isFallback) {
 		Content = <div className={styles.loading}>Loading ...</div>
 	} else {
+		const question = JSON.parse(props.question);
 		const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = question;
 		Content = 
 			<div>
