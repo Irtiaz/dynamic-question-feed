@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import MathJax from 'react-mathjax';
 
+import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
+
 import parseMathText from '../../lib/parseMathText.js';
 import shortid from 'shortid';
 
@@ -72,7 +74,9 @@ export default class Question extends React.Component {
 		let CopyButton = null;
 		if (this.props.id) {
 			const url = `http://brainfreeze.vercel.app/question/${this.props.id}`;
-			CopyButton = <button onClick={() => navigator.clipboard.writeText(url)}>Copy link to this question</button>;
+			CopyButton = <button onClick={() => navigator.clipboard.writeText(url)} className={styles.copy_button} >
+				<FileCopyTwoToneIcon />
+			</button>;
 		}
 
 		return (

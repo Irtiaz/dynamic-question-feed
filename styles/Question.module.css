@@ -26,3 +26,11 @@
 	padding: 1em;
 	margin: 1em 0;
 }
+
+.copy_button {
+	float: right;
+	background-color: var(--bg0);
+	color: var(--fg0);
+	cursor: pointer;
+	border: 0px;
+}
