@@ -62,6 +62,8 @@ export default class Home extends React.Component {
 		if (index >= 0) scrollToComponent(this.questionRefs[index].current, {
 			align: 'top'
 		});
+		event.target.gotoInput.value = "";
+		event.target.gotoInput.blur();
 	}
 
 
