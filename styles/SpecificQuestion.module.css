@@ -1,0 +1,7 @@
+.link_container {
+	color: var(--fg0);
+}
+
+.link_container a, .link_container a:visited {
+	color: var(--dark-blue);
+}
