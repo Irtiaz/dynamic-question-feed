@@ -109,6 +109,7 @@ export default class Home extends React.Component {
 					<span>{i + 1}</span>
 					<div className={styles.question_item}>
 						<Question 
+							id={_id}
 							ques={ques}
 							quesImageBase64={quesImageBase64}
 							quesImageWidth={quesImageWidth}

@@ -18,14 +18,22 @@ export default class Question extends React.Component {
 
 	
 	state = {
-		showSolution: false
+		showSolution: false,
 	};
+
+	urlInputRef = React.createRef();
 
 
 	handleToggle = () => {
 		this.setState({
 			showSolution: !this.state.showSolution
 		});
+	}
+
+
+	handleCopy = () => {
+		this.urlInputRef.current.select();
+		document.execCommand('copy');
 	}
 
 
@@ -69,8 +77,21 @@ export default class Question extends React.Component {
 
 		const toggleButtonText = this.state.showSolution? "Hide Solution" : "Show Solution";
 
+		let url;
+		if (this.props.id) url = `http://brainfreeze.vercel.app/question/${this.props.id}`;
+
+		let CopyButton = null;
+		let URLInput = null;
+		if (this.props.id) {
+			CopyButton = <button onClick={this.handleCopy}>Copy link to this question</button>;
+			URLInput = <input readOnly value={url} style={{display: "none"}} ref={this.urlInputRef} />;
+		}
+
 		return (
 			<div className={styles.container}>
+				{CopyButton}
+				{URLInput}	
+
 				<MathJax.Provider>
 					{properties.ques}
 					{QuesImage}

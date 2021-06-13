@@ -81,7 +81,8 @@ class Feed extends React.Component {
 					<div className={styles.question_wrapper}>
 						<span>{i + 1}</span>
 						<div className={styles.question_item}>
-							<Question 
+							<Question
+								id={_id}
 								ques={ques}
 								quesImageBase64={quesImageBase64}
 								quesImageWidth={quesImageWidth}
