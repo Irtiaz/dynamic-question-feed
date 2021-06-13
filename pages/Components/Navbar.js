@@ -18,8 +18,8 @@ export default class Navbar extends React.Component {
 					<nav className={styles.nav}>
 						<ul>
 							<li>
-								<Link href="/admin">
-									<a>Login as admin</a>
+								<Link href="/admin/feed">
+									<a>Admin Feed</a>
 								</Link>
 							</li>
 							<li>
