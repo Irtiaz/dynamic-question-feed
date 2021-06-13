@@ -237,7 +237,7 @@ class CreateQues extends React.Component {
 		const ChooseQuesImage = 
 			<div>
 				Select Question Image{" "} 
-				<input type="file" accept="image/png, image/jpeg" onChange={() => this.encodeImageFileAsURL(true)} ref={this.quesImageRef} />
+				<input type="file" accept="image/png, image/jpeg" onChange={() => this.encodeImageFileAsURL(true)} ref={this.quesImageRef} accept="image/*" />
 			</div>;
 	
 		let ClearQuesImage = null;
@@ -246,7 +246,7 @@ class CreateQues extends React.Component {
 
 		const ChooseAnsImage = <div>
 			Select Answer Image{" "}
-			<input type="file" accept="image/png, image/jpeg" onChange={() => this.encodeImageFileAsURL(false)} ref={this.ansImageRef} />
+			<input type="file" accept="image/png, image/jpeg" onChange={() => this.encodeImageFileAsURL(false)} ref={this.ansImageRef} accept="image/*" />
 		</div>;
 
 		let ClearAnsImage = null;
