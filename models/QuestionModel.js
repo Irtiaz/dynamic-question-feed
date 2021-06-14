@@ -24,5 +24,4 @@ let exp;
 if (mongoose.models === undefined || mongoose.models.Question === undefined) exp = mongoose.model('Question', questionSchema);
 else exp = mongoose.models.Question;
 
-//module.exports = mongoose.models.Question || mongoose.model('Question', questionSchema);
 module.exports = exp;
