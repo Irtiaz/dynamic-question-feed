@@ -18,9 +18,11 @@ export default class Question extends React.Component {
 	 * anything else = normal text
 	 * */
 
-	
+
 	state = {
 		showSolution: false,
+		mouseDown: false,
+		showFinalAns: false
 	};
 
 
@@ -30,10 +32,27 @@ export default class Question extends React.Component {
 		});
 	}
 
+	toggleVisibiltyOfFinalAns = (show) => {
+		this.setState({
+			showFinalAns: show,
+			mouseDown: show
+		});
+	}
+
+	resetVisibilityOfFinalAns = () => {
+		if (this.state.mouseDown) {
+			this.setState({
+				showFinalAns: false,
+				mouseDown: false
+			});
+		}
+	}
+
 
 	render() {
 		const quesLines = getLines(this.props.ques);
 		const ansLines = getLines(this.props.ans);
+		const finalAnsLines = getLines(this.props.finalAns);
 
 		const properties = {
 			ques: quesLines,
@@ -44,12 +63,13 @@ export default class Question extends React.Component {
 			ansImageBase64: this.props.ansImageBase64 || "",
 			ansImageWidth: this.props.ansImageWidth,
 			ansImageHeight: this.props.ansImageHeight,
+			finalAns: finalAnsLines
 		};
 
 		const QuesImage = getImage(properties.quesImageBase64, properties.quesImageWidth, properties.quesImageHeight);
 		let AnsImage = getImage(properties.ansImageBase64, properties.ansImageWidth, properties.ansImageHeight);
 
-		
+
 		let Solution = null;
 		if (this.state.showSolution) {
 			Solution = <div className={styles.solution_container}>
@@ -57,7 +77,7 @@ export default class Question extends React.Component {
 				{AnsImage}
 			</div>;
 		}
-		
+
 		const Keywords = [];
 		if (this.props.keywords) {
 			for (let keyword in this.props.keywords) {
@@ -78,6 +98,23 @@ export default class Question extends React.Component {
 				<FileCopyTwoToneIcon />
 			</button>;
 		}
+	
+		let FinalAnsDiv = null;
+		let FinalAnsContainer = null;
+		if (this.props.finalAns != undefined && this.props.finalAns.length > 0) {
+			if (this.state.showFinalAns) {
+				FinalAnsDiv = <div>{properties.finalAns}</div>;
+			} 
+			else {
+				FinalAnsDiv = <div>
+					Tap and hold to see the final answer
+				</div>
+			}
+			FinalAnsContainer = <div className={styles.final_ans_container} onMouseDown={() => this.toggleVisibiltyOfFinalAns(true)} onMouseUp={() => this.toggleVisibiltyOfFinalAns(false)} onMouseLeave={this.resetVisibilityOfFinalAns} >
+				{FinalAnsDiv}
+			</div>;
+		}
+
 
 		return (
 			<div className={styles.container}>
@@ -89,6 +126,9 @@ export default class Question extends React.Component {
 					<div className="keywords_container">
 						{Keywords}
 					</div>
+
+					{FinalAnsContainer}
+
 					<div style={{textAlign: "center"}}>
 						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
 					</div>

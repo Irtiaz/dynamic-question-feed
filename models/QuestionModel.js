@@ -15,7 +15,9 @@ const questionSchema = new Schema({
 	keywords: {
 		type: Map,
 		of: String
-	}
+	},
+
+	finalAns: String
 });
 
 let exp;

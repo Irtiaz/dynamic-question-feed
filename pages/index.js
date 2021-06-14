@@ -103,7 +103,7 @@ export default class Home extends React.Component {
 
 		const Questions = [];
 		for (let i = 0; i < questionList.length; ++i) {
-			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = questionList[i];
+			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = questionList[i];
 			const QuestionItem = 
 				<div key={_id} className={styles.question_wrapper} ref={this.questionRefs[i]} >
 					<span>{i + 1}</span>
@@ -119,6 +119,7 @@ export default class Home extends React.Component {
 							ansImageWidth={ansImageWidth}
 							ansImageHeight={ansImageHeight}
 							keywords={keywords}
+							finalAns={finalAns}
 						/>
 					</div>
 				</div>;

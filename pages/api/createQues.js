@@ -19,7 +19,8 @@ export default async function handler(req, res) {
 		await connectToDatabase();
 	}
 
-	const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = req.body;
+	const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = req.body;
+	console.log(finalAns);
 
 	const question = new Question({
 		ques,
@@ -30,7 +31,8 @@ export default async function handler(req, res) {
 		ansImageBase64,
 		ansImageWidth,
 		ansImageHeight,
-		keywords
+		keywords,
+		finalAns
 	});
 	
 	question.save(err => res.send(err));

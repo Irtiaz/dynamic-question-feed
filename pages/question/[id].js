@@ -11,7 +11,7 @@ import styles from '../../styles/SpecificQuestion.module.css';
 export default class SpecificQuestion extends React.Component {
 	render() {
 		const question = JSON.parse(this.props.question);
-		const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = question;
+		const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = question;
 
 		return (
 			<>
@@ -30,6 +30,7 @@ export default class SpecificQuestion extends React.Component {
 						ansImageWidth={ansImageWidth}
 						ansImageHeight={ansImageHeight}
 						keywords={keywords}
+						finalAns={finalAns}
 					/>
 					<div className={styles.link_container}>
 						Visit{" "}

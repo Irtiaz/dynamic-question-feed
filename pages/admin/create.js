@@ -20,7 +20,9 @@ class CreateQues extends React.Component {
 		ansImageWidth: 0,
 		ansImageHeight: 0,
 
-		keywords: {}
+		keywords: {},
+
+		finalAns: ""
 	};
 
 	quesAreaRef = React.createRef();
@@ -28,6 +30,8 @@ class CreateQues extends React.Component {
 
 	ansAreaRef = React.createRef();
 	ansImageRef = React.createRef();
+
+	finalAnsAreaRef = React.createRef();
 
 	_id = undefined;
 	
@@ -39,9 +43,10 @@ class CreateQues extends React.Component {
 
 		const question = JSON.parse(sessionStorage.getItem('question'));
 		if (question != null) {
-			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight} = question;
+			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns} = question;
 			this.quesAreaRef.current.value = ques;
 			this.ansAreaRef.current.value = ans;
+			this.finalAnsAreaRef.current.value = finalAns || "";
 			
 			for (let keyword in question.keywords) {
 				stateKeywords[keyword] = JSON.parse(question.keywords[keyword]);
@@ -64,9 +69,11 @@ class CreateQues extends React.Component {
 	handleRefresh = () => {
 		const ques = this.quesAreaRef.current.value;
 		const ans = this.ansAreaRef.current.value;
+		const finalAns = this.finalAnsAreaRef.current.value;
 		this.setState({
 			ques,
-			ans
+			ans,
+			finalAns
 		});
 	}
 
@@ -79,6 +86,12 @@ class CreateQues extends React.Component {
 	handleChangeAns = (event) => {
 		this.setState({
 			ans: event.target.value,
+		});
+	}
+
+	handleChangeFinalAns = (event) => {
+		this.setState({
+			finalAns: event.target.value
 		});
 	}
 
@@ -175,7 +188,9 @@ class CreateQues extends React.Component {
 			ansImageWidth: this.state.ansImageWidth,
 			ansImageHeight: this.state.ansImageHeight,
 
-			keywords: this.state.keywords
+			keywords: this.state.keywords,
+
+			finalAns: this.state.finalAns
 		};
 
 		if (editing) data["_id"] = this._id;
@@ -215,6 +230,7 @@ class CreateQues extends React.Component {
 				ansImageWidth={this.state.ansImageWidth}
 				ansImageHeight={this.state.ansImageHeight}
 				keywords={this.state.keywords}
+				finalAns={this.state.finalAns}
 			/>;
 		}
 
@@ -280,6 +296,11 @@ class CreateQues extends React.Component {
 							<textarea rows="4" cols="50" className={`${styles.input_area} ${styles.solution_input}`} spellCheck={false} ref={this.ansAreaRef} onChange={this.handleChangeAns} placeholder="Solution" />
 							{ChooseAnsImage}
 							{ClearAnsImage}
+						</div>
+
+						<div className={styles.container}>
+							Enter just the final answer here if it exists
+							<textarea className={styles.input_area} placeholder="Just the final answer" onChange={this.handleChangeFinalAns} ref={this.finalAnsAreaRef} />
 						</div>
 						
 						<div className="keywords_container">

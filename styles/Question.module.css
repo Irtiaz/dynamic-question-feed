@@ -33,3 +33,12 @@
 	cursor: pointer;
 	border: 0px;
 }
+
+
+.final_ans_container {
+	text-align: center;
+	user-select: none;
+	padding: 0.6em;
+	border: 2px dotted var(--fg0);
+	margin: 1em 3em;
+}

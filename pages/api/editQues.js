@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 		await connectToDatabase();
 	}
 
-	const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords} = req.body;
+	const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = req.body;
 
 	await Question.replaceOne({_id}, {
 		ques,
@@ -30,7 +30,8 @@ export default async function handler(req, res) {
 		ansImageBase64,
 		ansImageWidth,
 		ansImageHeight,
-		keywords
+		keywords,
+		finalAns
 	});
 	res.send({status: 'Success'});
 }
