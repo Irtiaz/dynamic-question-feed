@@ -3,6 +3,7 @@ import Image from 'next/image';
 import MathJax from 'react-mathjax';
 
 import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
+import GestureTapHoldIcon from 'mdi-react/GestureTapHoldIcon';
 
 import parseMathText from '../../lib/parseMathText.js';
 import shortid from 'shortid';
@@ -106,7 +107,9 @@ export default class Question extends React.Component {
 					onPointerLeave={() => this.toggleVisibiltyOfFinalAns(false)}
 				>
 					<div className={styles.final_ans_container}>
-						<div ref={this.instructionRef}>The answer</div>
+						<div ref={this.instructionRef}>
+							<GestureTapHoldIcon /> The answer
+						</div>
 						<div ref={this.finalAnsRef} style={{display: "none"}}>{properties.finalAns}</div>
 					</div>
 				</div>;
