@@ -106,6 +106,10 @@ function getLines(text){
 	const rawLines = parseMathText(text);
 	const lines = [];
 	for (let line of rawLines) {
+		if (line.length == 0) {
+			lines.push(<br key={shortid.generate()} />);
+			continue;
+		}
 		const ln = [];
 		for (let token of line)	{
 			if (token[0] === "`") ln.push(<MathJax.Node key={shortid.generate()} inline formula={token.substr(1, token.length - 2)}/>);
