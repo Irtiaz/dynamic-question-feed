@@ -10,16 +10,14 @@
 }
 
 .toggle_button {
-    padding: 0.5em;
-    margin: 1em 0;
-    background-color: var(--dark-yellow);
-	font-weight: bold;
-    border-radius: 1em;
-    cursor: pointer;
+	padding: 0.8em 1.2em;
+	margin: 0.5em;
+	border-radius: 2em;
+	background-color: #59df59;
 }
 
 .toggle_button:hover {
-	background-color: var(--light-yellow);
+	background-color: #68ff68;
 }
 
 .solution_container {
