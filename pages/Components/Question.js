@@ -160,7 +160,7 @@ function getLines(text){
 			else if (token[0] === "@") ln.push(<MathJax.Node key={shortid.generate()} formula={token.substr(1, token.length - 2)} />);
 			else ln.push(<span key={shortid.generate()}>{token}</span>);
 		}
-		lines.push(<React.Fragment key={shortid.generate()}>{ln}</React.Fragment>);
+		lines.push(<div key={shortid.generate()}>{ln}</div>);
 	}
 	return lines;
 }
