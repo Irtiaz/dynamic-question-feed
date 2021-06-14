@@ -101,9 +101,12 @@ export default class Question extends React.Component {
 					onMouseDown={() => this.toggleVisibiltyOfFinalAns(true)}
 					onMouseUp={() => this.toggleVisibiltyOfFinalAns(false)}
 					onMouseLeave={() => this.toggleVisibiltyOfFinalAns(false)}
+					onPointerDown={() => this.toggleVisibiltyOfFinalAns(true)}
+					onPointerUp={() => this.toggleVisibiltyOfFinalAns(false)}
+					onPointerLeave={() => this.toggleVisibiltyOfFinalAns(false)}
 				>
 					<div className={styles.final_ans_container}>
-						<div ref={this.instructionRef}>Tap and hold for a glimpse of the answer</div>
+						<div ref={this.instructionRef}>The answer</div>
 						<div ref={this.finalAnsRef} style={{display: "none"}}>{properties.finalAns}</div>
 					</div>
 				</div>;
