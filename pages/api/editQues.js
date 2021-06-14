@@ -15,11 +15,17 @@ async function connectToDatabase() {
 
 
 export default async function handler(req, res) {
+	const {token, _id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = req.body;
+
+	if (token !== process.env.TOKEN) {
+		res.send({status: 'Error'});
+		return;
+	}
+
 	if (mongoose.connection.readyState === 0) {
 		await connectToDatabase();
 	}
 
-	const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = req.body;
 
 	await Question.replaceOne({_id}, {
 		ques,

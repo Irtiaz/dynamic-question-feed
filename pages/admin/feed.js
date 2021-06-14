@@ -34,6 +34,7 @@ class Feed extends React.Component {
 		console.log(this.state.questionList[index]);
 
 		const data = {
+			token: localStorage.getItem('adminToken'),
 			_id: this.state.questionList[index]._id
 		};
 		const options = {

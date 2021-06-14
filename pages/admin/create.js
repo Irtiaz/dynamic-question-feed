@@ -178,6 +178,8 @@ class CreateQues extends React.Component {
 
 	handleAdd = async (editing) => {
 		const data = {
+			token: localStorage.getItem('adminToken'),
+
 			ques: this.state.ques,
 			quesImageBase64: this.state.quesImageBase64 || "",
 			quesImageWidth: this.state.quesImageWidth,

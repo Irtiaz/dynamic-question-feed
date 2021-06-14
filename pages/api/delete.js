@@ -15,11 +15,16 @@ async function connectToDatabase() {
 
 
 export default async function handler(req, res) {
+	if (req.body.token !== process.env.TOKEN) {
+		res.send({status: 'Error'});
+		return;
+	}
+
 	if (mongoose.connection.readyState === 0) {
 		await connectToDatabase();
 	}
 	
-	await Question.deleteOne(req.body, (err, result) => {
+	await Question.deleteOne({_id: req.body._id}, (err, result) => {
 		if (err) res.send(err);
 	});
 
