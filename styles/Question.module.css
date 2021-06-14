@@ -1,10 +1,11 @@
 .container {
-	margin: 0 0 1.3em 0;
+	margin: 0 0 1.5em 0;
     padding: 0.5em 0.5em;
     border: 1px solid grey;
     background-color: var(--bg1);
 	color: var(--fg0);
-    border-radius: 0.5em;
+	border: 2px solid var(--light-red);
+    border-radius: 20px;
     box-shadow: 1em 1em 1em #3c3836;
 	white-space: pre-wrap;
 }
@@ -39,6 +40,9 @@
 	text-align: center;
 	user-select: none;
 	padding: 0.6em;
-	border: 2px dotted var(--fg0);
+	color: var(--light-yellow);
+	border: 2px dotted var(--light-yellow);
+	border-radius: 2em;
 	margin: 1em 3em;
+	display: inline-block;
 }

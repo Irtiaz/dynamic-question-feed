@@ -21,9 +21,12 @@ export default class Question extends React.Component {
 
 	state = {
 		showSolution: false,
-		mouseDown: false,
 		showFinalAns: false
 	};
+
+
+	instructionRef = React.createRef();
+	finalAnsRef = React.createRef();
 
 
 	handleToggle = () => {
@@ -33,20 +36,10 @@ export default class Question extends React.Component {
 	}
 
 	toggleVisibiltyOfFinalAns = (show) => {
-		this.setState({
-			showFinalAns: show,
-			mouseDown: show
-		});
+		this.finalAnsRef.current.style.display = show? 'block' : 'none';
+		this.instructionRef.current.style.display = show? 'none' : 'block';
 	}
 
-	resetVisibilityOfFinalAns = () => {
-		if (this.state.mouseDown) {
-			this.setState({
-				showFinalAns: false,
-				mouseDown: false
-			});
-		}
-	}
 
 
 	render() {
@@ -99,21 +92,24 @@ export default class Question extends React.Component {
 			</button>;
 		}
 	
+		
 		let FinalAnsDiv = null;
 		let FinalAnsContainer = null;
 		if (this.props.finalAns != undefined && this.props.finalAns.length > 0) {
-			if (this.state.showFinalAns) {
-				FinalAnsDiv = <div>{properties.finalAns}</div>;
-			} 
-			else {
-				FinalAnsDiv = <div>
-					Tap and hold to see the final answer
-				</div>
-			}
-			FinalAnsContainer = <div className={styles.final_ans_container} onMouseDown={() => this.toggleVisibiltyOfFinalAns(true)} onMouseUp={() => this.toggleVisibiltyOfFinalAns(false)} onMouseLeave={this.resetVisibilityOfFinalAns} >
-				{FinalAnsDiv}
-			</div>;
+			FinalAnsContainer = 
+				<div
+					onMouseDown={() => this.toggleVisibiltyOfFinalAns(true)}
+					onMouseUp={() => this.toggleVisibiltyOfFinalAns(false)}
+					onMouseLeave={() => this.toggleVisibiltyOfFinalAns(false)}
+				>
+					<div className={styles.final_ans_container}>
+						<div ref={this.instructionRef}>Tap and hold for a glimpse of the answer</div>
+						<div ref={this.finalAnsRef} style={{display: "none"}}>{properties.finalAns}</div>
+					</div>
+				</div>;
 		}
+		
+		
 
 
 		return (
@@ -126,8 +122,10 @@ export default class Question extends React.Component {
 					<div className="keywords_container">
 						{Keywords}
 					</div>
-
-					{FinalAnsContainer}
+					
+					<div style={{textAlign: "center"}}>
+						{FinalAnsContainer}
+					</div>
 
 					<div style={{textAlign: "center"}}>
 						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
@@ -156,7 +154,7 @@ function getLines(text){
 			else if (token[0] === "@") ln.push(<MathJax.Node key={shortid.generate()} formula={token.substr(1, token.length - 2)} />);
 			else ln.push(<span key={shortid.generate()}>{token}</span>);
 		}
-		lines.push(<div key={shortid.generate()}>{ln}</div>);
+		lines.push(<React.Fragment key={shortid.generate()}>{ln}</React.Fragment>);
 	}
 	return lines;
 }
