@@ -20,9 +20,11 @@ export default class Question extends React.Component {
 
 
 	state = {
-		showSolution: false,
-		showFinalAns: false
+		showSolution: false
 	};
+
+	instructionRef = React.createRef();
+	finalAnsRef = React.createRef();
 
 
 	handleToggle = () => {
@@ -32,10 +34,9 @@ export default class Question extends React.Component {
 	}
 
 
-	handleFinalAnsToggle = () => {
-		this.setState({
-			showFinalAns: !this.state.showFinalAns
-		});
+	handleFinalAnsToggle = (show) => {
+		this.instructionRef.current.style.display = show? "none" : "block";
+		this.finalAnsRef.current.style.display = show? "block" : "none";
 	}
 
 
@@ -91,14 +92,14 @@ export default class Question extends React.Component {
 		}
 	
 		
-		let FinalAnsDiv = null;
 		let FinalAnsContainer = null;
 		if (this.props.finalAns != undefined && this.props.finalAns.length > 0) {
-			if (this.state.showFinalAns) FinalAnsDiv = <div>{properties.finalAns}</div>;
-			else FinalAnsDiv = <div>The Answer</div>;
 			FinalAnsContainer = <div className={styles.final_ans_container}>
-				{FinalAnsDiv}
-				<input type="checkbox" className={styles.slider} onChange={this.handleFinalAnsToggle} />
+				<div>
+					<span ref={this.instructionRef}>The answer</span>
+					<span ref={this.finalAnsRef} style={{display: "none"}}>{properties.finalAns}</span>
+				</div>
+				<input type="checkbox" className={styles.slider} onChange={(event) => this.handleFinalAnsToggle(event.target.checked)} />
 			</div>
 		}
 		
