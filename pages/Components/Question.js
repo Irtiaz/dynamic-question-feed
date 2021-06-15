@@ -3,6 +3,7 @@ import Image from 'next/image';
 import MathJax from 'react-mathjax';
 
 import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
+import ReloadIcon from 'mdi-react/ReloadIcon';
 
 import parseMathText from '../../lib/parseMathText.js';
 import shortid from 'shortid';
@@ -108,7 +109,13 @@ export default class Question extends React.Component {
 
 		return (
 			<div className={styles.container}>
-				{CopyButton}
+
+				<div className={styles.icon_buttons}>
+					<button className={styles.reload_button} onClick={() => this.forceUpdate()}>
+						<ReloadIcon />
+					</button>
+					{CopyButton}
+				</div>
 
 				<MathJax.Provider>
 					{properties.ques}
