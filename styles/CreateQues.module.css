@@ -72,3 +72,15 @@
 .clear_image:hover {
 	background-color: var(--light-red);
 }
+
+.link_container {
+	margin: 2em 0;
+}
+
+.link_container a, .link_container a:visited {
+	color: var(--dark-blue);
+}
+
+.link_container a:hover {
+	color: var(--light-blue);
+}

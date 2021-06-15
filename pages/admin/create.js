@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import shortid from 'shortid';
 
@@ -34,6 +35,7 @@ class CreateQues extends React.Component {
 	finalAnsAreaRef = React.createRef();
 
 	_id = undefined;
+
 	
 	componentDidMount = () => {
 		const stateKeywords = {};
@@ -63,6 +65,7 @@ class CreateQues extends React.Component {
 				keywords: stateKeywords
 			});
 		}
+
 	}
 
 
@@ -75,24 +78,28 @@ class CreateQues extends React.Component {
 			ans,
 			finalAns
 		});
+
 	}
 
 	handleChangeQues = (event) => {
 		this.setState({
 			ques: event.target.value,
 		});
+
 	}
 
 	handleChangeAns = (event) => {
 		this.setState({
 			ans: event.target.value,
 		});
+
 	}
 
 	handleChangeFinalAns = (event) => {
 		this.setState({
 			finalAns: event.target.value
 		});
+		
 	}
 
 	encodeImageFileAsURL = (isQues) => {
@@ -147,6 +154,7 @@ class CreateQues extends React.Component {
 			}
 		}
 		reader.readAsDataURL(file);
+
 	}
 
 	handleClearImage = (ques) => {
@@ -159,6 +167,7 @@ class CreateQues extends React.Component {
 				ansImageBase64: ""
 			});
 		}
+
 	}
 
 
@@ -173,6 +182,7 @@ class CreateQues extends React.Component {
 		this.setState({
 			keywords: copy
 		});
+
 	}
 
 
@@ -219,6 +229,8 @@ class CreateQues extends React.Component {
 
 
 	render() {
+		localStorage.setItem('preview', JSON.stringify(this.state));
+
 		let Preview = null;
 
 		if (this.state.ques.length > 0) {
@@ -285,6 +297,12 @@ class CreateQues extends React.Component {
 						<div className={styles.instructions}>
 							Wrap tex around 2 @ signs for block level tex or <br />
 							2 backticks(`) for inline tex
+						</div>
+
+						<div class={styles.link_container}>
+							<Link href="/admin/preview">
+								<a target="_blank">Goto your question's preview</a>
+							</Link>
 						</div>
 						
 						<div className={styles.container}>
