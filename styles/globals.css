@@ -81,3 +81,9 @@ a {
 	background-color: var(--light-blue);
 	border-radius: 0;
 }
+
+@media screen and (max-width: 500px) {
+	html * {
+		font-size: 8pt;
+	}
+}
