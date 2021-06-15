@@ -4,7 +4,7 @@
     border: 1px solid grey;
     background-color: var(--bg1);
 	color: var(--fg0);
-	border: 2px solid var(--light-red);
+	border: 2px solid var(--fg3);
     border-radius: 20px;
     box-shadow: 1em 1em 1em #3c3836;
 	white-space: pre-wrap;
@@ -51,7 +51,7 @@
 	align-items: center;
 	margin: 0 2em;
 	color: var(--light-yellow);
-	border: 2px dotted var(--light-yellow);
+	border: 2.5px solid var(--light-yellow);
 	border-radius: 25px;
 	padding: 0.5em 1.3em;
 }
@@ -69,7 +69,7 @@
 }
 
 .slider:checked {
-	background-color: #2196f3;
+	background-color: var(--light-yellow);
 }
 
 .slider:before {
