@@ -5,14 +5,14 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "kalpurush";
-  background-color: var(--bg); 
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, "kalpurush";
+	background-color: var(--bg); 
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :root {
@@ -82,6 +82,10 @@ a {
 	border-radius: 0;
 }
 
+.alert {
+	display: none;
+}
+
 @media screen and (max-width: 500px) {
 	html * {
 		font-size: 8pt;
@@ -89,5 +93,40 @@ a {
 
 	.keyword {
 		font-size: 0.5rem;
+	}
+
+	svg {
+		width: 16px;
+	}
+
+
+	.alert {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--dark-blue);
+		margin-bottom: 2em;
+		border-radius: 20px;
+		padding: 0.5em;
+		flex-flow: wrap;
+	}
+
+	.alert_text {
+		display: flex;
+		align-items: center;
+		margin-left: auto;
+	}
+
+	.alert_icon {
+		margin-right: 1em;
+		color: var(--light-orange);
+	}
+
+	.close_alert {
+		margin-left: auto;
+		background-color: transparent;
+		color: white;
+		border: none;
+		cursor: pointer;
 	}
 }

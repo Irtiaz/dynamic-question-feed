@@ -7,6 +7,9 @@ import shortid from 'shortid';
 import QuestionModel from '../models/QuestionModel.js';
 import keywords from '../lib/keywordsList.js';
 
+import CloseBoxIcon from 'mdi-react/CloseBoxIcon';
+import AlertIcon from 'mdi-react/AlertIcon';
+
 import Question from './Components/Question.js';
 import styles from '../styles/Home.module.css';
 
@@ -16,7 +19,8 @@ export default class Home extends React.Component {
 
 	state = {
 		keywords: {},
-		showFilters: false
+		showFilters: false,
+		showAlert: true
 	};
 	
 	questionRefs = [];
@@ -64,6 +68,13 @@ export default class Home extends React.Component {
 		});
 		event.target.gotoInput.value = "";
 		event.target.gotoInput.blur();
+	}
+
+
+	closeAlert = () => {
+		this.setState({
+			showAlert: false
+		});
 	}
 
 
@@ -155,13 +166,29 @@ export default class Home extends React.Component {
 			</div>;
 		}
 
+		let LandscapeAlert = null;
+		if (this.state.showAlert) {
+			LandscapeAlert = 
+				<div className="alert">
+					<div className="alert_text">
+						<AlertIcon size="1.2em" className="alert_icon" />
+						Having problem reading? <br />
+						Try the landscape mode!
+					</div>
+					<button onClick={this.closeAlert} className="close_alert">
+						<CloseBoxIcon size="1.5em" />
+					</button>
+				</div>;
+		}
+
 
 		return (
 			<>
 				<Head>
 					<title>Brain Freeze</title>
 				</Head>
-				<div>
+				<div style={{color: "var(--fg0)"}}>
+					{LandscapeAlert}
 					<div>
 						<button onClick={this.handleFilterToggle} className={styles.filter_button}>{filterButtonText}</button>
 						{ClearFilterButton}

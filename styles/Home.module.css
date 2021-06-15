@@ -41,3 +41,39 @@
 .scroll_container input::placeholder {
 	color: var(--fg2);
 }
+
+/*.alert {*/
+	/*display: none;*/
+/*}*/
+
+/*@media screen and (max-width: 500px) {*/
+	/*.alert {*/
+		/*display: flex;*/
+		/*justify-content: center;*/
+		/*align-items: center;*/
+		/*background-color: var(--dark-blue);*/
+		/*margin-bottom: 2em;*/
+		/*border-radius: 20px;*/
+		/*padding: 0.5em;*/
+		/*flex-flow: wrap;*/
+	/*}*/
+
+	/*.alert_text {*/
+		/*display: flex;*/
+		/*align-items: center;*/
+		/*margin-left: auto;*/
+	/*}*/
+
+	/*.alert_icon {*/
+		/*margin-right: 1em;*/
+		/*color: var(--light-orange);*/
+	/*}*/
+
+	/*.close_alert {*/
+		/*margin-left: auto;*/
+		/*background-color: transparent;*/
+		/*color: white;*/
+		/*border: none;*/
+		/*cursor: pointer;*/
+	/*}*/
+/*}*/

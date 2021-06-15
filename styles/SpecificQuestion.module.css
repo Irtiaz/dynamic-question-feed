@@ -1,7 +1,20 @@
-.link_container {
+.info {
+	display: flex;
+	align-items: center;
 	color: var(--fg0);
+	margin: 1em 0;
 }
 
-.link_container a, .link_container a:visited {
+.description {
+	margin-left: 0.5em;
+}
+
+.info a, .info a:visited {
 	color: var(--dark-blue);
+}
+
+@media screen and (max-width: 500px) {
+	.info {
+		margin: 0.3em;
+	}
 }

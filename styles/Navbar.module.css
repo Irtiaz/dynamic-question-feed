@@ -48,3 +48,18 @@
 .nav a:hover {
 	color: var(--fg0);
 }
+
+
+@media screen and (max-width: 500px) {
+	.header {
+		padding: 1.5em;
+	}
+
+	.header a {
+		font-size: 1.2rem;
+	}
+
+	.nav a {
+		font-size: 0.7rem;
+	}
+}
