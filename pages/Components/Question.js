@@ -3,7 +3,6 @@ import Image from 'next/image';
 import MathJax from 'react-mathjax';
 
 import FileCopyTwoToneIcon from '@material-ui/icons/FileCopyTwoTone';
-import GestureTapHoldIcon from 'mdi-react/GestureTapHoldIcon';
 
 import parseMathText from '../../lib/parseMathText.js';
 import shortid from 'shortid';
@@ -26,19 +25,17 @@ export default class Question extends React.Component {
 	};
 
 
-	instructionRef = React.createRef();
-	finalAnsRef = React.createRef();
-
-
 	handleToggle = () => {
 		this.setState({
 			showSolution: !this.state.showSolution
 		});
 	}
 
-	toggleVisibiltyOfFinalAns = (show) => {
-		this.finalAnsRef.current.style.display = show? 'block' : 'none';
-		this.instructionRef.current.style.display = show? 'none' : 'block';
+
+	handleFinalAnsToggle = () => {
+		this.setState({
+			showFinalAns: !this.state.showFinalAns
+		});
 	}
 
 
@@ -97,22 +94,12 @@ export default class Question extends React.Component {
 		let FinalAnsDiv = null;
 		let FinalAnsContainer = null;
 		if (this.props.finalAns != undefined && this.props.finalAns.length > 0) {
-			FinalAnsContainer = 
-				<div
-					onMouseDown={() => this.toggleVisibiltyOfFinalAns(true)}
-					onMouseUp={() => this.toggleVisibiltyOfFinalAns(false)}
-					onMouseLeave={() => this.toggleVisibiltyOfFinalAns(false)}
-					onPointerDown={() => this.toggleVisibiltyOfFinalAns(true)}
-					onPointerUp={() => this.toggleVisibiltyOfFinalAns(false)}
-					onPointerLeave={() => this.toggleVisibiltyOfFinalAns(false)}
-				>
-					<div className={styles.final_ans_container}>
-						<div ref={this.instructionRef}>
-							<GestureTapHoldIcon /> The answer
-						</div>
-						<div ref={this.finalAnsRef} style={{display: "none"}}>{properties.finalAns}</div>
-					</div>
-				</div>;
+			if (this.state.showFinalAns) FinalAnsDiv = <div>{properties.finalAns}</div>;
+			else FinalAnsDiv = <div>The Answer</div>;
+			FinalAnsContainer = <div className={styles.final_ans_container}>
+				{FinalAnsDiv}
+				<input type="checkbox" className={styles.slider} onChange={this.handleFinalAnsToggle} />
+			</div>
 		}
 		
 		
@@ -129,12 +116,14 @@ export default class Question extends React.Component {
 						{Keywords}
 					</div>
 					
-					<div style={{textAlign: "center"}}>
-						{FinalAnsContainer}
-					</div>
+					<div className={styles.solution_control_div}>
+						<div>
+							{FinalAnsContainer}
+						</div>
 
-					<div style={{textAlign: "center"}}>
-						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
+						<div style={{textAlign: "center"}}>
+							<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
+						</div>
 					</div>
 					{Solution}
 				</MathJax.Provider>
