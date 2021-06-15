@@ -56,10 +56,10 @@ a {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: flex-start;
-	font-size: 0.7rem;
 }
 
 .keyword {
+	font-size: 0.7rem;
 	display: flex;
 	margin: 0.5em;
 	color: white;
@@ -85,5 +85,9 @@ a {
 @media screen and (max-width: 500px) {
 	html * {
 		font-size: 8pt;
+	}
+
+	.keyword {
+		font-size: 0.5rem;
 	}
 }
