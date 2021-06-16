@@ -13,6 +13,7 @@ import AlertIcon from 'mdi-react/AlertIcon';
 import Question from './Components/Question.js';
 import styles from '../styles/Home.module.css';
 
+
 let scrollToComponent;
 
 export default class Home extends React.Component {
@@ -25,7 +26,7 @@ export default class Home extends React.Component {
 	
 	questionRefs = [];
 
-	componentDidMount = () => {
+	componentDidMount = async () => {
 		scrollToComponent = require('react-scroll-to-component');
 	}
 
