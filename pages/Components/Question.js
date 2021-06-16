@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import MathJax from 'react-mathjax';
-import ReactMarkdown from 'react-markdown';
 
 import ContentCopyIcon from 'mdi-react/ContentCopyIcon';
 import ReloadIcon from 'mdi-react/ReloadIcon';
@@ -172,7 +171,7 @@ function getLines(text){
 		for (let token of line)	{
 			if (token[0] === "`") ln.push(<MathJax.Node key={shortid.generate()} inline formula={token.substr(1, token.length - 2)}/>);
 			else if (token[0] === "@") ln.push(<MathJax.Node key={shortid.generate()} formula={token.substr(1, token.length - 2)} />);
-			else ln.push(<ReactMarkdown key={shortid.generate()}>{token}</ReactMarkdown>)			
+			else ln.push(<span key={shortid.generate()}>{token}</span>);
 		}
 		lines.push(<div key={shortid.generate()}>{ln}</div>);
 	}
