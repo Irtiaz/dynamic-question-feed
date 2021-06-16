@@ -11,6 +11,7 @@ export default class About extends React.Component {
 					<title>About this project</title>
 				</Head>
 				<div className={styles.container}>
+
 					<div className={styles.box}>
 						<b>Credits</b> <br />
 						Question review and solution : Md Imtiaz Kabir <br />

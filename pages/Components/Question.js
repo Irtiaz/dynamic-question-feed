@@ -1,6 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
-import MathJax from 'react-mathjax';
+
+import ReactMarkdown from 'react-markdown';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 
 import ContentCopyIcon from 'mdi-react/ContentCopyIcon';
 import ReloadIcon from 'mdi-react/ReloadIcon';
@@ -55,9 +59,21 @@ export default class Question extends React.Component {
 
 
 	render() {
-		const quesLines = getLines(this.props.ques);
-		const ansLines = getLines(this.props.ans);
-		const finalAnsLines = getLines(this.props.finalAns);
+		const quesLines = <ReactMarkdown
+			remarkPlugins={[remarkMath]}
+			rehypePlugins={[rehypeKatex]}
+			children={this.props.ques}
+		/>;
+		const ansLines = <ReactMarkdown
+			remarkPlugins={[remarkMath]}
+			rehypePlugins={[rehypeKatex]}
+			children={this.props.ans}
+		/>;
+		const finalAnsLines = <ReactMarkdown
+			remarkPlugins={[remarkMath]}
+			rehypePlugins={[rehypeKatex]}
+			children={this.props.finalAns}
+		/>;
 
 		const properties = {
 			ques: quesLines,
@@ -132,7 +148,6 @@ export default class Question extends React.Component {
 					{CopyButton}
 				</div>
 
-				<MathJax.Provider>
 					{properties.ques}
 					{QuesImage}
 					<div className="keywords_container">
@@ -149,7 +164,6 @@ export default class Question extends React.Component {
 						</div>
 					</div>
 					{Solution}
-				</MathJax.Provider>
 
 			</div>
 		);
