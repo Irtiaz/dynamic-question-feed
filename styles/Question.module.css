@@ -98,3 +98,27 @@
 .slider:checked:before {
 	left: 2em;
 }
+
+.copy_feedback {
+	position: fixed;
+	bottom: 2em;
+	left: 50%;
+	display: none;
+	z-index: 10;
+	border: 1px solid white;
+	color: white;
+	background-color: black;
+	padding: 0.5em;
+	border-radius: 20px;
+}
+
+.fade_in_and_out {
+	display: block;
+	opacity: 1;
+	animation: fade 2s linear;
+}
+
+@keyframes fade {
+	0%,100% { opacity: 0 }
+	50% { opacity: 1 }
+}

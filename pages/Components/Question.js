@@ -26,6 +26,7 @@ export default class Question extends React.Component {
 
 	instructionRef = React.createRef();
 	finalAnsRef = React.createRef();
+	copyFeedbackRef = React.createRef();
 
 
 	handleToggle = () => {
@@ -38,6 +39,17 @@ export default class Question extends React.Component {
 	handleFinalAnsToggle = (show) => {
 		this.instructionRef.current.style.display = show? "none" : "block";
 		this.finalAnsRef.current.style.display = show? "block" : "none";
+	}
+
+	
+	handleCopy = () => {
+		const url = `http://brainfreeze.vercel.app/question/${this.props.id}`;
+		navigator.clipboard.writeText(url);
+		const className = styles.fade_in_and_out;
+		this.copyFeedbackRef.current.classList.add(className);
+		setTimeout(() => {
+			this.copyFeedbackRef.current.classList.remove(className);
+		}, 1900);
 	}
 
 
@@ -86,8 +98,7 @@ export default class Question extends React.Component {
 
 		let CopyButton = null;
 		if (this.props.id) {
-			const url = `http://brainfreeze.vercel.app/question/${this.props.id}`;
-			CopyButton = <button onClick={() => navigator.clipboard.writeText(url)} className={styles.copy_button} >
+			CopyButton = <button onClick={this.handleCopy} className={styles.copy_button} >
 				<ContentCopyIcon />
 			</button>;
 		}
@@ -109,6 +120,10 @@ export default class Question extends React.Component {
 
 		return (
 			<div className={styles.container}>
+
+				<div className={styles.copy_feedback} ref={this.copyFeedbackRef}>
+					Link Copied!
+				</div>
 
 				<div className={styles.icon_buttons}>
 					<button className={styles.reload_button} onClick={() => this.forceUpdate()}>
