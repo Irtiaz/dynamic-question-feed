@@ -172,7 +172,7 @@ export default class Home extends React.Component {
 				<div className="alert">
 					<div className="alert_text">
 						<AlertIcon size="1.2em" className="alert_icon" />
-						Having problem reading? <br />
+						Having trouble reading? <br />
 						Try the landscape mode!
 					</div>
 					<button onClick={this.closeAlert} className="close_alert">
