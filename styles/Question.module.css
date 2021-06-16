@@ -104,6 +104,7 @@
 	bottom: 2em;
 	left: 50%;
 	display: none;
+	transform: translate(-50%, 0);
 	z-index: 10;
 	border: 1px solid white;
 	color: white;
