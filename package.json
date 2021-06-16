@@ -20,6 +20,8 @@
     "react-markdown": "^6.0.2",
     "react-mathjax": "^1.0.1",
     "react-scroll-to-component": "^1.0.2",
+    "rehype-katex": "^5.0.0",
+    "remark-math": "^4.0.0",
     "shortid": "^2.2.16"
   }
 }
