@@ -55,7 +55,7 @@ class CreateQues extends React.Component {
 			}
 
 			this.setState({
-				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight,
+				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns,
 				keywords: stateKeywords
 			});
 			this._id = question._id;
@@ -299,7 +299,7 @@ class CreateQues extends React.Component {
 							2 backticks(`) for inline tex
 						</div>
 
-						<div class={styles.link_container}>
+						<div className={styles.link_container}>
 							<Link href="/admin/preview">
 								<a target="_blank">Goto your question's preview</a>
 							</Link>

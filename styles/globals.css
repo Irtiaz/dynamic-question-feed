@@ -61,6 +61,7 @@ a {
 .keyword {
 	font-size: 0.7rem;
 	display: flex;
+	align-items: center;
 	margin: 0.5em;
 	color: white;
 	padding: 0.5em 1em;
@@ -93,6 +94,10 @@ a {
 
 	.keyword {
 		font-size: 0.5rem;
+	}
+
+	.keyword input[type=checkbox] {
+		transform: scale(0.6);
 	}
 
 	svg {
