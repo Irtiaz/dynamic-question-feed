@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
 
 	useEffect(async () => {
 		//(await import('katex/dist/katex.min.css'));
-		await require('katex/dist/katex.min.css');
+		//await require('katex/dist/katex.min.css');
 	});
 
 	return (
