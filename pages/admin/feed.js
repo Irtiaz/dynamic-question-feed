@@ -5,6 +5,10 @@ import Router from 'next/router';
 import mongoose from 'mongoose';
 import QuestionModel from '../../models/QuestionModel.js';
 
+import NotePlusIcon from 'mdi-react/NotePlusIcon';
+import PencilIcon from 'mdi-react/PencilIcon';
+import DeleteIcon from 'mdi-react/DeleteIcon';
+
 import withAuth from '../Components/withAuth.js';
 import Question from '../Components/Question.js';
 
@@ -79,6 +83,14 @@ class Feed extends React.Component {
 
 			const QuestionItem = 
 				<div className={styles.question_container} key={_id} >
+					<div className={styles.button_div} >
+						<button className={styles.edit} onClick={() => this.handleEdit(i)}>
+							<PencilIcon />
+						</button>
+						<button className={styles.delete} onClick={() => this.handleDelete(i)}>
+							<DeleteIcon />
+						</button>
+					</div>
 					<div className={styles.question_wrapper}>
 						<span>{i + 1}</span>
 						<div className={styles.question_item}>
@@ -97,10 +109,6 @@ class Feed extends React.Component {
 							/>
 						</div>
 					</div>
-					<div className={styles.button_div} >
-						<button className={styles.edit} onClick={() => this.handleEdit(i)}>Edit</button>
-						<button className={styles.delete} onClick={() => this.handleDelete(i)}>Delete</button>
-					</div>
 				</div>;
 
 			Questions.push(QuestionItem);
@@ -116,7 +124,9 @@ class Feed extends React.Component {
 					<div style={{textAlign: "right"}}>
 						<button onClick={this.handleLogout} className={styles.logout_button}>Logout</button>
 					</div>
-					<button className={styles.add_button} onClick={this.handleAdd}>Add new question</button>
+					<button className={styles.add_button} onClick={this.handleAdd}>
+						<NotePlusIcon />
+					</button>
 					{Questions}
 				</div>
 			</>

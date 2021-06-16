@@ -1,10 +1,9 @@
 .button_div {
-	text-align: center;
+	margin: 0 0 1em 1em;
 }
 
 .button_div button {
-	padding: 1em 1.4em;
-	margin: 0 1em;
+	margin-right: 0.4em;
 	border-radius: 2em;
 }
 
