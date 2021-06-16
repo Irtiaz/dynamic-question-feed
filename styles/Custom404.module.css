@@ -1,0 +1,47 @@
+.page {
+	color: var(--fg0);
+	text-align: center;
+}
+
+.page h1 {
+	margin: 0.2em 0 0 0;
+	font-size: 7em;
+}
+
+.subheader {
+	font-size: 2em;
+}
+
+.info_container {
+	margin: 5em 0;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	color: var(--fg0);
+	margin: 1em 0;
+}
+
+.description {
+	margin-left: 0.5em;
+}
+
+.info a, .info a:visited {
+	color: var(--dark-blue);
+}
+
+
+@media screen and (max-width: 500px) {
+	.page h1 {
+		font-size: 3em;
+	}
+
+	.info_container {
+		margin: 10em 0;
+	}
+
+	.info {
+		margin: 0.3em;
+	}
+}
