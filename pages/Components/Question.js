@@ -4,7 +4,6 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import 'katex/dist/katex.min.css';
 
 import ContentCopyIcon from 'mdi-react/ContentCopyIcon';
 import ReloadIcon from 'mdi-react/ReloadIcon';
