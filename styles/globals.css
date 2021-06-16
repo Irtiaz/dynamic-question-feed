@@ -11,6 +11,10 @@ body {
 	background-color: var(--bg); 
 }
 
+.katex-display {
+	margin: 0;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -22,6 +26,10 @@ a {
 a:hover {
 	color: var(--light-blue);
 }
+
+/*.katex-display {*/
+	/*margin: 0;*/
+/*}*/
 
 :root {
 	--bg: #282828;

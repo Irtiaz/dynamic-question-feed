@@ -10,10 +10,6 @@
 	white-space: pre-wrap;
 }
 
-.container span, .container p {
-	margin: 0;
-}
-
 .toggle_button {
 	padding: 0.8em 1.2em;
 	margin: 0.5em 1em;
