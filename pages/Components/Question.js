@@ -4,6 +4,7 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 
 import ContentCopyIcon from 'mdi-react/ContentCopyIcon';
 import ReloadIcon from 'mdi-react/ReloadIcon';
@@ -60,17 +61,17 @@ export default class Question extends React.Component {
 	render() {
 		const quesLines = <ReactMarkdown
 			remarkPlugins={[remarkMath]}
-			rehypePlugins={[rehypeKatex]}
+			rehypePlugins={[rehypeKatex, rehypeRaw]}
 			children={this.props.ques}
 		/>;
 		const ansLines = <ReactMarkdown
 			remarkPlugins={[remarkMath]}
-			rehypePlugins={[rehypeKatex]}
+			rehypePlugins={[rehypeKatex, rehypeRaw]}
 			children={this.props.ans}
 		/>;
 		const finalAnsLines = <ReactMarkdown
 			remarkPlugins={[remarkMath]}
-			rehypePlugins={[rehypeKatex]}
+			rehypePlugins={[rehypeKatex, rehypeRaw]}
 			children={this.props.finalAns}
 		/>;
 
