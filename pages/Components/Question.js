@@ -9,7 +9,6 @@ import rehypeRaw from 'rehype-raw';
 import ContentCopyIcon from 'mdi-react/ContentCopyIcon';
 import ReloadIcon from 'mdi-react/ReloadIcon';
 
-import parseMathText from '../../lib/parseMathText.js';
 import shortid from 'shortid';
 
 import styles from '../../styles/Question.module.css';
@@ -142,9 +141,6 @@ export default class Question extends React.Component {
 				</div>
 
 				<div className={styles.icon_buttons}>
-					<button className={styles.reload_button} onClick={() => this.forceUpdate()}>
-						<ReloadIcon />
-					</button>
 					{CopyButton}
 				</div>
 
@@ -168,28 +164,6 @@ export default class Question extends React.Component {
 			</div>
 		);
 	}
-}
-
-
-
-function getLines(text){
-	if (text === undefined) return;
-	const rawLines = parseMathText(text);
-	const lines = [];
-	for (let line of rawLines) {
-		if (line.length == 0) {
-			lines.push(<br key={shortid.generate()} />);
-			continue;
-		}
-		const ln = [];
-		for (let token of line)	{
-			if (token[0] === "`") ln.push(<MathJax.Node key={shortid.generate()} inline formula={token.substr(1, token.length - 2)}/>);
-			else if (token[0] === "@") ln.push(<MathJax.Node key={shortid.generate()} formula={token.substr(1, token.length - 2)} />);
-			else ln.push(<span key={shortid.generate()}>{token}</span>);
-		}
-		lines.push(<div key={shortid.generate()}>{ln}</div>);
-	}
-	return lines;
 }
 
 
