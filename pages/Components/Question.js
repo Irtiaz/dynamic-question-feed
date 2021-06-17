@@ -15,30 +15,16 @@ import styles from '../../styles/Question.module.css';
 
 export default class Question extends React.Component {
 
-	/*
-	 * Rules
-	 * backticks (`E = mc^2`) mean inlines
-	 * @ signs (@E = mc^2@) mean block level elements
-	 * anything else = normal text
-	 * */
-
-
 	state = {
 		showSolution: false
 	};
 
 	instructionRef = React.createRef();
 	finalAnsRef = React.createRef();
-	toggleButtonRef = React.createRef();
 	copyFeedbackRef = React.createRef();
 
 
 	handleToggle = () => {
-		const loadingText = "Loading ...";
-
-		if (this.toggleButtonRef.current.textContent === loadingText) return;
-
-		this.toggleButtonRef.current.textContent = loadingText;
 		this.setState({
 			showSolution: !this.state.showSolution
 		});
