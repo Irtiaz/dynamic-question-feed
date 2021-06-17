@@ -29,10 +29,16 @@ export default class Question extends React.Component {
 
 	instructionRef = React.createRef();
 	finalAnsRef = React.createRef();
+	toggleButtonRef = React.createRef();
 	copyFeedbackRef = React.createRef();
 
 
 	handleToggle = () => {
+		const loadingText = "Loading ...";
+
+		if (this.toggleButtonRef.current.textContent === loadingText) return;
+
+		this.toggleButtonRef.current.textContent = loadingText;
 		this.setState({
 			showSolution: !this.state.showSolution
 		});
@@ -158,7 +164,7 @@ export default class Question extends React.Component {
 					</div>
 
 					<div style={{textAlign: "center"}}>
-						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
+						<button onClick={this.handleToggle} className={styles.toggle_button} ref={this.toggleButtonRef}>{toggleButtonText}</button>
 					</div>
 				</div>
 				{Solution}
