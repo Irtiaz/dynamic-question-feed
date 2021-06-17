@@ -44,7 +44,7 @@ export default class Question extends React.Component {
 		this.finalAnsRef.current.style.display = show? "block" : "none";
 	}
 
-	
+
 	handleCopy = () => {
 		const url = `http://brainfreeze.vercel.app/question/${this.props.id}`;
 		navigator.clipboard.writeText(url);
@@ -117,8 +117,8 @@ export default class Question extends React.Component {
 				<ContentCopyIcon />
 			</button>;
 		}
-	
-		
+
+
 		let FinalAnsContainer = null;
 		if (this.props.finalAns != undefined && this.props.finalAns.length > 0) {
 			FinalAnsContainer = <div className={styles.final_ans_container}>
@@ -129,8 +129,8 @@ export default class Question extends React.Component {
 				<input type="checkbox" className={styles.slider} onChange={(event) => this.handleFinalAnsToggle(event.target.checked)} />
 			</div>
 		}
-		
-		
+
+
 
 
 		return (
@@ -144,22 +144,24 @@ export default class Question extends React.Component {
 					{CopyButton}
 				</div>
 
-					{properties.ques}
-					{QuesImage}
-					<div className="keywords_container">
-						{Keywords}
-					</div>
-					
-					<div className={styles.solution_control_div}>
-						<div>
-							{FinalAnsContainer}
-						</div>
+				<br />
 
-						<div style={{textAlign: "center"}}>
-							<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
-						</div>
+				{properties.ques}
+				{QuesImage}
+				<div className="keywords_container">
+					{Keywords}
+				</div>
+
+				<div className={styles.solution_control_div}>
+					<div>
+						{FinalAnsContainer}
 					</div>
-					{Solution}
+
+					<div style={{textAlign: "center"}}>
+						<button onClick={this.handleToggle} className={styles.toggle_button}>{toggleButtonText}</button>
+					</div>
+				</div>
+				{Solution}
 
 			</div>
 		);

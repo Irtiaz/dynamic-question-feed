@@ -295,8 +295,9 @@ class CreateQues extends React.Component {
 					<div className={styles.page}>
 
 						<div className={styles.instructions}>
-							Wrap tex around 2 @ signs for block level tex or <br />
-							2 backticks(`) for inline tex
+							Lost? Try this{" "}
+							<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown cheatsheet</a>
+							{" "} from github!
 						</div>
 
 						<div className={styles.link_container}>
