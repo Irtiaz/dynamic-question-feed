@@ -16,7 +16,8 @@ import styles from '../../styles/Question.module.css';
 export default class Question extends React.Component {
 
 	state = {
-		showSolution: false
+		showSolution: false,
+		loadingSolution: false
 	};
 
 	instructionRef = React.createRef();
@@ -25,9 +26,20 @@ export default class Question extends React.Component {
 
 
 	handleToggle = () => {
-		this.setState({
-			showSolution: !this.state.showSolution
-		});
+		if (!this.state.loading) {
+			this.setState({
+				loadingSolution: true
+			});
+		}
+	}
+
+	componentDidUpdate = () => {
+		if (this.state.loadingSolution) {
+			this.setState({
+				loadingSolution: false,
+				showSolution: !this.state.showSolution
+			});
+		}
 	}
 
 
@@ -83,7 +95,7 @@ export default class Question extends React.Component {
 
 
 		let Solution = null;
-		if (this.state.showSolution) {
+		if (!this.state.loading && this.state.showSolution) {
 			Solution = <div className={styles.solution_container}>
 				{properties.ans}
 				{AnsImage}
@@ -101,7 +113,10 @@ export default class Question extends React.Component {
 			}
 		}
 
-		const toggleButtonText = this.state.showSolution? "Hide Solution" : "Show Solution";
+		//const toggleButtonText = this.state.showSolution? "Hide Solution" : "Show Solution";
+		let  toggleButtonText;
+		if (this.state.loadingSolution) toggleButtonText = "Loading ...";
+		else toggleButtonText = this.state.showSolution? "Hide Solution" : "Show Solution";
 
 		let CopyButton = null;
 		if (this.props.id) {
