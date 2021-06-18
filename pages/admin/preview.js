@@ -52,10 +52,8 @@ class Preview extends React.Component {
 
 		setInterval(() => {
 			const previewStr = localStorage.getItem('preview');
-			if (JSON.stringify(this.state) != previewStr) {
-				const question = JSON.parse(localStorage.getItem('preview'));
-				this.setState(question);
-			}
+			const question = JSON.parse(localStorage.getItem('preview'));
+			this.setState(question);
 		}, 1000);
 	}
 
