@@ -17,7 +17,8 @@ const questionSchema = new Schema({
 		of: String
 	},
 
-	finalAns: String
+	finalAns: String,
+	visible: Boolean
 });
 
 let exp;

@@ -23,7 +23,8 @@ class CreateQues extends React.Component {
 
 		keywords: {},
 
-		finalAns: ""
+		finalAns: "",
+		visible: true
 	};
 
 	quesAreaRef = React.createRef();
@@ -45,7 +46,8 @@ class CreateQues extends React.Component {
 
 		const question = JSON.parse(sessionStorage.getItem('question'));
 		if (question != null) {
-			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns} = question;
+			console.log(question);
+			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns, visible} = question;
 			this.quesAreaRef.current.value = ques;
 			this.ansAreaRef.current.value = ans;
 			this.finalAnsAreaRef.current.value = finalAns || "";
@@ -55,7 +57,7 @@ class CreateQues extends React.Component {
 			}
 
 			this.setState({
-				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns,
+				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns, visible,
 				keywords: stateKeywords
 			});
 			this._id = question._id;
@@ -68,18 +70,6 @@ class CreateQues extends React.Component {
 
 	}
 
-
-	handleRefresh = () => {
-		const ques = this.quesAreaRef.current.value;
-		const ans = this.ansAreaRef.current.value;
-		const finalAns = this.finalAnsAreaRef.current.value;
-		this.setState({
-			ques,
-			ans,
-			finalAns
-		});
-
-	}
 
 	handleChangeQues = (event) => {
 		this.setState({
@@ -202,7 +192,8 @@ class CreateQues extends React.Component {
 
 			keywords: this.state.keywords,
 
-			finalAns: this.state.finalAns
+			finalAns: this.state.finalAns,
+			visible: this.state.visible
 		};
 
 		if (editing) data["_id"] = this._id;
@@ -225,6 +216,12 @@ class CreateQues extends React.Component {
 		const msg = !editing? "Question added successfully" : "Question edited successfully";
 		if (json.status == 'Success') alert(msg);
 		else alert("Something went wrong!");
+	}
+
+	toggleVisibilty = () => {
+		this.setState({
+			visible: !this.state.visible
+		});
 	}
 
 
@@ -328,7 +325,10 @@ class CreateQues extends React.Component {
 							{KeywordsCheckboxes}
 						</div>
 
-						<button className={styles.refresh_button} onClick={this.handleRefresh}>Refresh</button>
+						<div>
+							<button onClick={this.toggleVisibilty}>{this.state.visible? "Visible" : "Hidden"}</button>
+						</div>
+
 						<button className={styles.add_button} onClick={() => this.handleAdd(false)}>Add new question</button>
 
 						{EditButton}

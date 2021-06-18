@@ -30,20 +30,6 @@
 }
 
 
-.refresh_button {
-	padding: 0.8em 1em;
-	background-color: #04AA6D;
-	border-color: #04AA6D;
-	color: white;
-	border-radius: 1em;
-	margin-bottom: 2em;
-}
-
-.refresh_button:hover {
-	background-color: #0dd38a;
-}
-
-
 .add_button {
 	padding: 0.8em 1em;
 	background-color: var(--dark-blue);

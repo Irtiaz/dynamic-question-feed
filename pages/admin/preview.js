@@ -19,7 +19,8 @@ class Preview extends React.Component {
 
 		keywords: {},
 
-		finalAns: ""
+		finalAns: "",
+		visible: true
 	};
 
 
@@ -31,14 +32,14 @@ class Preview extends React.Component {
 
 		const question = JSON.parse(localStorage.getItem('preview'));
 		if (question != null) {
-			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns} = question;
+			const {ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, finalAns, visible} = question;
 
 			for (let keyword in question.keywords) {
 				stateKeywords[keyword] = JSON.parse(question.keywords[keyword]);
 			}
 
 			this.setState({
-				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight,
+				ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, visible,
 				keywords: stateKeywords
 			});
 			this._id = question._id;

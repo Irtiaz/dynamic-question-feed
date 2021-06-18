@@ -15,7 +15,7 @@ async function connectToDatabase() {
 
 
 export default async function handler(req, res) {
-	const {token, _id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = req.body;
+	const {token, _id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns, visible} = req.body;
 
 	if (token !== process.env.TOKEN) {
 		res.send({status: 'Error'});
@@ -37,7 +37,8 @@ export default async function handler(req, res) {
 		ansImageWidth,
 		ansImageHeight,
 		keywords,
-		finalAns
+		finalAns,
+		visible
 	});
 	res.send({status: 'Success'});
 }

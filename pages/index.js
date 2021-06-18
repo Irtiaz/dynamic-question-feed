@@ -216,7 +216,7 @@ export async function getStaticProps(context) {
 		});
 	}
 
-	const questions = await QuestionModel.find({});
+	const questions = await QuestionModel.find({visible: true});
 
 	return {
 		props: {
