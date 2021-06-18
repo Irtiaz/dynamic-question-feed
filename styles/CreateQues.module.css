@@ -34,7 +34,7 @@
 	padding: 0.8em 1em;
 	background-color: var(--dark-blue);
 	color: #fbf1c7;
-	margin: 0 1em;
+	margin: 0 1em 1.2em 0;
 	border-radius: 1em;
 }
 
@@ -70,3 +70,12 @@
 .link_container a:hover {
 	color: var(--light-blue);
 }
+
+
+.top_line {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+

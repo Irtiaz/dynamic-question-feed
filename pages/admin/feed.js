@@ -8,6 +8,8 @@ import QuestionModel from '../../models/QuestionModel.js';
 import NotePlusIcon from 'mdi-react/NotePlusIcon';
 import PencilIcon from 'mdi-react/PencilIcon';
 import DeleteIcon from 'mdi-react/DeleteIcon';
+import EyeIcon from 'mdi-react/EyeIcon';
+import EyeOffIcon from 'mdi-react/EyeOffIcon';
 
 import withAuth from '../Components/withAuth.js';
 import Question from '../Components/Question.js';
@@ -74,23 +76,66 @@ class Feed extends React.Component {
 		Router.replace('/');
 	}
 
+	toggleVisibilty = async (index) => {
+		const data = {};
+		Object.assign(data, this.state.questionList[index]);
+
+		data.visible = !data.visible;
+		data.token = localStorage.getItem('adminToken');
+
+		console.log(data);
+
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		};
+
+		const response = await fetch('/api/editQues', options);
+		const json = await response.json();
+		console.log(json);
+		if (json.status == 'Success') {
+			const copy = this.state.questionList.slice();
+			copy[index].visible = !copy[index].visible;
+
+			this.setState({
+				questionList: copy
+			});
+
+		} else {
+			alert("Something went wrong!");
+		}
+	}
+
 
 	render() {
-		
 		const Questions = [];
 		for (let i = 0; i < this.state.questionList.length; ++i) {
-			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns} = this.state.questionList[i];
+			const {_id, ques, quesImageBase64, quesImageWidth, quesImageHeight, ans, ansImageBase64, ansImageWidth, ansImageHeight, keywords, finalAns, visible} = this.state.questionList[i];
+
+			const containerClass = visible? styles.question_container : `${styles.question_container} ${styles.hidden_question}`;
+
+			const VisIcon = visible? <EyeIcon /> : <EyeOffIcon />;
 
 			const QuestionItem = 
-				<div className={styles.question_container} key={_id} >
+				<div className={containerClass} key={_id} >
+
 					<div className={styles.button_div} >
 						<button className={styles.edit} onClick={() => this.handleEdit(i)}>
 							<PencilIcon />
 						</button>
+
 						<button className={styles.delete} onClick={() => this.handleDelete(i)}>
 							<DeleteIcon />
 						</button>
+
+						<button className="toggle_visibilty_button" onClick={() => this.toggleVisibilty(i)}>
+							{VisIcon}
+						</button>
 					</div>
+
 					<div className={styles.question_wrapper}>
 						<span>{i + 1}</span>
 						<div className={styles.question_item}>

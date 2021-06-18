@@ -14,6 +14,10 @@
 	margin: 0 0 1.5em 0;
 }
 
+.hidden_question {
+	border: 2px solid var(--light-red);
+}
+
 .question_wrapper {
 	display: flex;
 	color: var(--fg0);

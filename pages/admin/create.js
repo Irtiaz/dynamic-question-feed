@@ -7,6 +7,9 @@ import Question from '../Components/Question.js';
 import withAuth from '../Components/withAuth.js';
 import styles from '../../styles/CreateQues.module.css';
 
+import EyeIcon from 'mdi-react/EyeIcon';
+import EyeOffIcon from 'mdi-react/EyeOffIcon';
+
 import keywords from '../../lib/keywordsList.js';
 
 class CreateQues extends React.Component {
@@ -37,7 +40,7 @@ class CreateQues extends React.Component {
 
 	_id = undefined;
 
-	
+
 	componentDidMount = () => {
 		const stateKeywords = {};
 		for (let keyword of keywords) {
@@ -51,7 +54,7 @@ class CreateQues extends React.Component {
 			this.quesAreaRef.current.value = ques;
 			this.ansAreaRef.current.value = ans;
 			this.finalAnsAreaRef.current.value = finalAns || "";
-			
+
 			for (let keyword in question.keywords) {
 				stateKeywords[keyword] = JSON.parse(question.keywords[keyword]);
 			}
@@ -89,7 +92,7 @@ class CreateQues extends React.Component {
 		this.setState({
 			finalAns: event.target.value
 		});
-		
+
 	}
 
 	encodeImageFileAsURL = (isQues) => {
@@ -245,7 +248,7 @@ class CreateQues extends React.Component {
 			/>;
 		}
 
-		
+
 		const KeywordsCheckboxes = [];
 		for (let i = 0; i < keywords.length; ++i) {
 			const keyword = keywords[i];
@@ -266,7 +269,7 @@ class CreateQues extends React.Component {
 				Select Question Image{" "} 
 				<input type="file" accept="image/png, image/jpeg" onChange={() => this.encodeImageFileAsURL(true)} ref={this.quesImageRef} accept="image/*" />
 			</div>;
-	
+
 		let ClearQuesImage = null;
 		if (this.state.quesImageBase64.length != 0) ClearQuesImage = 
 			<button onClick={() => this.handleClearImage(true)} className={styles.clear_image}>Clear Question Image</button>;
@@ -283,61 +286,66 @@ class CreateQues extends React.Component {
 		let EditButton = null;
 		if (sessionStorage.getItem('question') != null) EditButton = <button onClick={() => this.handleAdd(true)} className={styles.add_button}>Edit Existing Question</button>;
 
+		
+		const VisIcon = this.state.visible? <EyeIcon /> : <EyeOffIcon />;
 
-			return (
-				<>
-					<Head>
-						<title>Create Question</title>
-					</Head>
-					<div className={styles.page}>
+		return (
+			<>
+				<Head>
+					<title>Create Question</title>
+				</Head>
+				<div className={styles.page}>
 
-						<div className={styles.instructions}>
-							Lost? Try this{" "}
-							<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown cheatsheet</a>
-							{" "} from github!
-						</div>
+					<div className={styles.instructions}>
+						Lost? Try this{" "}
+						<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown cheatsheet</a>
+						{" "} from github!
+					</div>
+					
+					<div className={styles.top_line}>
+						<button onClick={this.toggleVisibilty} className="toggle_visibilty_button">
+							{VisIcon}
+						</button>
 
 						<div className={styles.link_container}>
 							<Link href="/admin/preview">
 								<a target="_blank">Goto your question's preview</a>
 							</Link>
 						</div>
-						
-						<div className={styles.container}>
-							Enter Question Text Here
-							<textarea rows="4" cols="50" className={styles.input_area} spellCheck={false} ref={this.quesAreaRef} onChange={this.handleChangeQues} placeholder="Question" />
-							{ChooseQuesImage}
-							{ClearQuesImage}
-						</div>
-						<div className={styles.container}>
-							Enter Solution Text Here
-							<textarea rows="4" cols="50" className={`${styles.input_area} ${styles.solution_input}`} spellCheck={false} ref={this.ansAreaRef} onChange={this.handleChangeAns} placeholder="Solution" />
-							{ChooseAnsImage}
-							{ClearAnsImage}
-						</div>
-
-						<div className={styles.container}>
-							Enter just the final answer here if it exists
-							<textarea className={styles.input_area} placeholder="Just the final answer" onChange={this.handleChangeFinalAns} ref={this.finalAnsAreaRef} />
-						</div>
-						
-						<div className="keywords_container">
-							{KeywordsCheckboxes}
-						</div>
-
-						<div>
-							<button onClick={this.toggleVisibilty}>{this.state.visible? "Visible" : "Hidden"}</button>
-						</div>
-
-						<button className={styles.add_button} onClick={() => this.handleAdd(false)}>Add new question</button>
-
-						{EditButton}
-
-						{Preview}
-
 					</div>
-				</>
-			);
+
+					<div className={styles.container}>
+						Enter Question Text Here
+						<textarea rows="4" cols="50" className={styles.input_area} spellCheck={false} ref={this.quesAreaRef} onChange={this.handleChangeQues} placeholder="Question" />
+						{ChooseQuesImage}
+						{ClearQuesImage}
+					</div>
+					<div className={styles.container}>
+						Enter Solution Text Here
+						<textarea rows="4" cols="50" className={`${styles.input_area} ${styles.solution_input}`} spellCheck={false} ref={this.ansAreaRef} onChange={this.handleChangeAns} placeholder="Solution" />
+						{ChooseAnsImage}
+						{ClearAnsImage}
+					</div>
+
+					<div className={styles.container}>
+						Enter just the final answer here if it exists
+						<textarea className={styles.input_area} placeholder="Just the final answer" onChange={this.handleChangeFinalAns} ref={this.finalAnsAreaRef} />
+					</div>
+
+					<div className="keywords_container">
+						{KeywordsCheckboxes}
+					</div>
+
+
+					<button className={styles.add_button} onClick={() => this.handleAdd(false)}>Add new question</button>
+
+					{EditButton}
+
+					{Preview}
+
+				</div>
+			</>
+		);
 	}
 }
 

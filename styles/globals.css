@@ -103,6 +103,15 @@ a {
 	display: none;
 }
 
+
+.toggle_visibilty_button {
+	border: none;
+	background-color: transparent;
+	color: var(--fg0);
+	cursor: pointer;
+}
+
+
 @media screen and (max-width: 500px) {
 	html * {
 		font-size: 8pt;
