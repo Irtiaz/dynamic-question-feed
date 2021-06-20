@@ -329,7 +329,7 @@ class CreateQues extends React.Component {
 
 					<div className={styles.container}>
 						Enter just the final answer here if it exists
-						<textarea className={styles.input_area} placeholder="Just the final answer" onChange={this.handleChangeFinalAns} ref={this.finalAnsAreaRef} />
+						<textarea className={styles.input_area} placeholder="Just the final answer" onChange={this.handleChangeFinalAns} spellCheck={false} ref={this.finalAnsAreaRef} />
 					</div>
 
 					<div className="keywords_container">
