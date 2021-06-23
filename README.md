@@ -14,7 +14,7 @@ I created a [http://irtiaz.github.io/Questions](webpage) where I hard-code quest
 ```
 While it works, it was extremely tedious to create a new question or modify an existing one. Not to meention the image management for them!
 
-* [Here's the source code if you are interested to learn the hard way](https://github.com/Irtiaz/Questions) *
+*[Here's the source code if you are interested to learn the hard way](https://github.com/Irtiaz/Questions)*
 
 ### How it is now
 
