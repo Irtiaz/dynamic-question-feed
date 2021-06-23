@@ -6,7 +6,7 @@ Whenever I needed to revisit a problem I had to search each and every page of ea
 That's when I decided to actually go about solving that problem, but making it more challenging and fun!
 
 ### How it all started
-I created a [http://irtiaz.github.io/Questions](webpage) where I hard-code questions in pure html like so
+I created a [webpage](http://irtiaz.github.io/Questions) where I hard-code questions in pure html like so
 ```html
 <li>
 	Some question
