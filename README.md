@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Dynamic Question Feed
+When I was in [my college](https://ndc.edu.bd/) I had a massive collection of interesting questions scattered 
+in various random pages in my notebook.
+Whenever I needed to revisit a problem I had to search each and every page of each and every notebook I ever had!
 
-## Getting Started
+That's when I decided to actually go about solving that problem, but making it more challenging and fun!
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+### How it all started
+I created a [http://irtiaz.github.io/Questions](webpage) where I hard-code questions in pure html like so
+```html
+<li>
+	Some question
+</li>
 ```
+While it works, it was extremely tedious to create a new question or modify an existing one. Not to meention the image management for them!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* [Here's the source code if you are interested to learn the hard way](https://github.com/Irtiaz/Questions) *
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### How it is now
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+That's when I decided to make this question-feed completely dynamic. By which I mean that the admin will not have to add each and every question by hard-coding it
+Rather he will get an intuitive GUI where he can write the question with the solution, and the web app will be smart enough to code that question itself!
+Also, the questions can be edited or deleted with a single mouse click!!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+I used [Next JS](http://nextjs.org/) and [mongoDB](https://www.mongodb.com/) as the main tools for this website.
 
-## Learn More
+You can go ahead and visit the website (deployed with [Vercel](https://vercel.com/))
+**Right now all the questions are in Bangla**
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+With that being said, I **do not** plan on making the questions editable by general people. You **will** need a password to edit or add questions
